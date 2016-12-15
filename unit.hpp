@@ -13,25 +13,39 @@
     public:
         UnitModel(std::string name, int maxHP, int price, int attackScore, int range, int exclusiveRange);
 
-
     };
 
     class Unit {
     private:
         UnitModel& model;
         Player& owner;
-        int HP = maxHP;
+        int health;
         int pos;
 
     public:
         Unit(Player&,UnitModel&);
 
-        void checkLineOfSight();
-        void attack(Unit&);
-        void advance();
+        int engage(Game&);
 
-        void takeDamage();
+        std::vector<Unit*> checkLineOfSight(std::vector<Unit*>);
+        bool attack(Unit&);
+        void advance(Game&);
+
+        void takeDamage(int);
         bool alive();
+
+        void setPosition(int);
+        void setHealth(int);
+
+        int getHealth();
+        int getPosition();
+
+        Player& owner();
+    };
+
+    class Base : public Unit {
+    private:
+
     };
 
 #endif // unit_hpp__

@@ -35,6 +35,7 @@
 		<Unit filename="game.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="player.hpp" />
+		<Unit filename="unit.cpp" />
 		<Unit filename="unit.hpp" />
 		<Extensions>
 			<code_completion />

@@ -10,6 +10,7 @@
         int currentTurn;
 
         std::vector<UnitModel> unitModels;
+        std::vector<Unit*> units;
 
     public:
         AgeOfWarGame(Player&, Player&, int nbt);
@@ -18,6 +19,11 @@
         Player& getCurrentPlayer();
 
         void addUnitModel(UnitModel);
+        const std::vector<Unit*> getUnits();
+
+        bool nextTurn();
+
+        bool purchase(Player&, UnitModel&);
     };
 
 #endif // game_hpp__
