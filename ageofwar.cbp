@@ -29,11 +29,14 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-std=c++11" />
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="game.cpp" />
 		<Unit filename="game.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="player.cpp" />
 		<Unit filename="player.hpp" />
 		<Unit filename="unit.cpp" />
 		<Unit filename="unit.hpp" />

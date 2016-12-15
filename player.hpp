@@ -1,12 +1,11 @@
 #ifndef player_hpp__
 #define player_hpp__
+#include <string>
 
     class Player {
     protected:
-        unsigned int hp;
         std::string name;
-        unsigned int gold;
-
+        unsigned int gold = 0;
 
     public:
         Player(std::string);
@@ -19,11 +18,11 @@
 
     public:
         Human(std::string);
+
+        void play();
     };
 
     class AI : public Player {
-
-        static int iaCount = 0;
 
     public:
         AI(std::string);

@@ -1,7 +1,12 @@
 #ifndef game_hpp__
 #define game_hpp__
+#include <vector>
 
-    class AgeOfWarGame {
+    class Player;
+    class UnitModel;
+    class Unit;
+
+    class Game {
     private:
         Player& red;
         Player& blue;
@@ -13,13 +18,15 @@
         std::vector<Unit*> units;
 
     public:
-        AgeOfWarGame(Player&, Player&, int nbt);
+        Game(Player&, Player&, int nbt);
 
         int hasEnded();
         Player& getCurrentPlayer();
 
         void addUnitModel(UnitModel);
         const std::vector<Unit*> getUnits();
+
+        int checkPosition(int);
 
         bool nextTurn();
 

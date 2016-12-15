@@ -1,8 +1,15 @@
 #ifndef unit_hpp__
 #define unit_hpp__
 
+#include <vector>
+#include <string>
+
+    class Game;
+    class Player;
+
     class UnitModel {
     protected:
+        std::string name;
         int maxHP = 10;
         int price = 0;
         int attackScore = 1;
@@ -11,25 +18,30 @@
         int speed = 1;
 
     public:
+
+        friend class Unit;
+
         UnitModel(std::string name, int maxHP, int price, int attackScore, int range, int exclusiveRange);
 
+        int getMaxHealth();
     };
 
     class Unit {
-    private:
+    protected:
         UnitModel& model;
         Player& owner;
         int health;
         int pos;
 
+        bool attack(Unit&);
+
     public:
         Unit(Player&,UnitModel&);
 
-        int engage(Game&);
+        virtual int engage(Game&);
 
         std::vector<Unit*> checkLineOfSight(std::vector<Unit*>);
-        bool attack(Unit&);
-        void advance(Game&);
+        bool advance(Game&); // mobile
 
         void takeDamage(int);
         bool alive();
@@ -40,12 +52,16 @@
         int getHealth();
         int getPosition();
 
-        Player& owner();
+        Player& getOwner();
     };
 
-    class Base : public Unit {
-    private:
+    class Building : public Unit {
 
+    };
+
+    class MobileUnit : public Unit {
+    public:
+        MobileUnit(Player&, UnitModel&);
     };
 
 #endif // unit_hpp__

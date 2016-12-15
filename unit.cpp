@@ -1,3 +1,5 @@
+
+#include "game.hpp"
 #include "unit.hpp"
 
     UnitModel::UnitModel(std::string name, int maxHP, int price, int attackScore, int range, int exclusiveRange) {
@@ -11,30 +13,58 @@
 
     }
 
+    int UnitModel::getMaxHealth() {
+        return maxHP;
+    }
+
     Unit::Unit(Player& player, UnitModel& um) : owner(player), model(um) {
-        health = maxHP;
+        health = um.maxHP;
     }
 
     std::vector<Unit*> Unit::checkLineOfSight(std::vector<Unit*> units) {
-
+        std::vector<Unit*> spotted;
+        for (std::vector<Unit*>::iterator it = units.begin(); it != units.end(); ++it) {
+            if ((*it)->getPosition() > model.exclusiveRange && (*it)->getPosition() <= model.range)
+                spotted.push_back(*it);
+        }
+        return spotted;
     }
 
     bool Unit::attack(Unit& unit) {
-        // if unit is in los
-        // else return false
-
-        // if unit is not dead
-        // else return false
-
-        unit.takeDamage(model.attackScore);
+        if (unit.alive()) {
+            unit.takeDamage(model.attackScore);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
-    void Unit::advance(Game& g) {
-
+    bool Unit::advance(Game& g) {
+        int newpos = pos + 1;
+        if (g.checkPosition(newpos)) {
+            return false;
+        }
+        else {
+            pos = newpos;
+        }
     }
 
     int Unit::engage(Game& game) {
+    // 0 no action
+    // 1 attack successful;
+    // 2 attack successful; killed target
+    // 4 moved
         std::vector<Unit*> potential_targets = checkLineOfSight(game.getUnits());
+        if (potential_targets.size()) {
+            for (std::vector<Unit*>::iterator it = potential_targets.begin(); it != potential_targets.end(); ++it) {
+                if (attack(**it)) return 1 + (*it)->alive();
+            }
+        }
+        else { // try to move
+            return advance(game)*4;
+        }
+        return 0;
     }
 
     void Unit::takeDamage(int damage) {
@@ -44,4 +74,12 @@
 
     bool Unit::alive() {
         return health > 0;
+    }
+
+    int Unit::getHealth() {
+        return health;
+    }
+
+    int Unit::getPosition() {
+        return pos;
     }
