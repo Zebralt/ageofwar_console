@@ -31,6 +31,11 @@
         bool nextTurn();
 
         bool purchase(Player&, UnitModel&);
+
+        Player& getBlue();
+        Player& getRed();
+
+        Player& getWinner();
     };
 
 #endif // game_hpp__

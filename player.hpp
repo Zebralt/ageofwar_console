@@ -7,12 +7,16 @@
         std::string name;
         unsigned int gold = 0;
 
+        friend std::ostream& operator<<(std::ostream&, const Player&);
+
     public:
         Player(std::string);
 
         virtual void play() = 0;
         bool hasLost();
     };
+
+    std::ostream& operator<<(std::ostream&, const Player&);
 
     class Human : public Player {
 

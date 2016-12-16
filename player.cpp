@@ -19,3 +19,9 @@
     void AI::play() {
 
     }
+
+
+    std::ostream& operator<<(std::ostream& o, const Player& p) {
+        o << p.name;
+        return o;
+    }

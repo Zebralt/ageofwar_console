@@ -3,6 +3,15 @@
 #include "unit.hpp"
 #include "game.hpp"
 
+struct Point { int* x; int* y;};
+
+Point get() {
+    int a = 2;
+    int b = 5;
+    Point p; p.x = &a; p.y = &b;
+    return p;
+}
+
 int main()
 {
     Human red("Satan");
@@ -11,7 +20,19 @@ int main()
 
     aowg.addUnitModel(UnitModel("Base",100,0,1,1,0));
 
-    std::cout << true+4 << std::endl;
+    // main loop would look like this :
+
+    while(!aowg.hasEnded()) {
+
+    }
+
+    Player& winner = aowg.getWinner();
+    std::cout << winner << " won the game." << std::endl;
+
+    Point p = get();
+    std::cout << *(p.x) << std::endl;
+    std::string n = "ae"; std::string m = "bb"; char c = 'x';
+    std::cout << n+m+c << std::endl;
     return 0;
 }
 
@@ -64,7 +85,7 @@ UnitModel : EntityModel {
 
 }
 
-BuildingModel : EntityModel {
+BuildingModel :     EntityModel {
 
 }
 

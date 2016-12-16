@@ -41,7 +41,7 @@
     }
 
     bool Unit::advance(Game& g) {
-        int newpos = pos + 1;
+        int newpos = pos + (&owner==&g.getBlue()?1:-1);
         if (g.checkPosition(newpos)) {
             return false;
         }
