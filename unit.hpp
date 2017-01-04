@@ -3,51 +3,29 @@
 
 #include <vector>
 #include <string>
+#include "model.hpp"
 
     class Game;
     class Player;
 
-    class UnitModel {
-    protected:
-        std::string name;
-        int maxHP = 10;
-        int price = 0;
-        int attackScore = 1;
-        int range = 1;
-        int exclusiveRange = 0;
-        int speed = 1;
-
-    public:
-
-        friend class Unit;
-
-        UnitModel(std::string name, int maxHP, int price, int attackScore, int range, int exclusiveRange);
-
-        int getMaxHealth();
-    };
-
     class Unit {
     protected:
-        UnitModel& model;
+        Model& model;
         Player& owner;
         int health;
         int pos;
 
-        bool attack(Unit&);
-
     public:
-        Unit(Player&,UnitModel&);
+        Unit(Player&,Model&);
 
-        virtual int engage(Game&);
-
-        std::vector<Unit*> checkLineOfSight(std::vector<Unit*>);
-        bool advance(Game&); // mobile
-
+        virtual int engage(Game&); // une action par temps t
         void takeDamage(int);
         bool alive();
 
         void setPosition(int);
         void setHealth(int);
+
+        virtual void setModel(Model&);
 
         int getHealth();
         int getPosition();
@@ -55,13 +33,26 @@
         Player& getOwner();
     };
 
+
+    class HostileUnit : public Unit {
+        protected:
+        public:
+            HostileUnit(Player&, HostileModel&);
+            std::vector<Unit*> checkLineOfSight(std::vector<Unit*>);
+            bool attack(Unit&);
+    };
+
+
     class Building : public Unit {
+        public:
 
     };
 
     class MobileUnit : public Unit {
+    private:
     public:
-        MobileUnit(Player&, UnitModel&);
+        MobileUnit(Player&, MobileModel&);
+        bool advance(Game&); // mobile
     };
 
 #endif // unit_hpp__

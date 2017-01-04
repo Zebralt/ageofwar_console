@@ -3,7 +3,7 @@
 #include <vector>
 
     class Player;
-    class UnitModel;
+    class Model;
     class Unit;
 
     class Game {
@@ -14,7 +14,7 @@
         int nbturns;
         int currentTurn;
 
-        std::vector<UnitModel> unitModels;
+        std::vector<Model> models;
         std::vector<Unit*> units;
 
     public:
@@ -23,19 +23,21 @@
         int hasEnded();
         Player& getCurrentPlayer();
 
-        void addUnitModel(UnitModel);
+        void addModel(Model);
         const std::vector<Unit*> getUnits();
 
         int checkPosition(int);
 
         bool nextTurn();
 
-        bool purchase(Player&, UnitModel&);
+        bool purchase(Player&, Model&);
 
         Player& getBlue();
         Player& getRed();
 
         Player& getWinner();
+
+        bool loadModels();
     };
 
 #endif // game_hpp__

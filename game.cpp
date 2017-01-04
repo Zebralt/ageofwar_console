@@ -1,8 +1,11 @@
 #include "player.hpp"
+#include "model.hpp"
 #include "unit.hpp"
 #include "game.hpp"
 
     Game::Game(Player& b, Player& r, int nbt = 0) : red(r), blue(b), nbturns(nbt) {
+
+        loadModels();
 
     }
 
@@ -14,8 +17,8 @@
         return (currentTurn%2?red:blue);
     }
 
-    void Game::addUnitModel(UnitModel um) {
-        unitModels.push_back(um);
+    void Game::addModel(Model um) {
+        models.push_back(um);
     }
 
     const std::vector<Unit*> Game::getUnits() {
@@ -40,4 +43,9 @@
 
     Player& Game::getWinner() {
         return blue;
+    }
+
+    bool Game::loadModels() {
+        //read info.cfg
+        return true;
     }

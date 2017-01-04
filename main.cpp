@@ -5,20 +5,11 @@
 
 struct Point { int* x; int* y;};
 
-Point get() {
-    int a = 2;
-    int b = 5;
-    Point p; p.x = &a; p.y = &b;
-    return p;
-}
-
 int main()
 {
-    Human red("Satan");
-    Human blue("Lucifer");
+    Human red("Red");
+    Human blue("Blue");
     Game aowg(red,blue,100);
-
-    aowg.addUnitModel(UnitModel("Base",100,0,1,1,0));
 
     // main loop would look like this :
 
@@ -29,10 +20,6 @@ int main()
     Player& winner = aowg.getWinner();
     std::cout << winner << " won the game." << std::endl;
 
-    Point p = get();
-    std::cout << *(p.x) << std::endl;
-    std::string n = "ae"; std::string m = "bb"; char c = 'x';
-    std::cout << n+m+c << std::endl;
     return 0;
 }
 
@@ -81,7 +68,7 @@ EntityModel : Model {
     - range (min/max)
 }
 
-UnitModel : EntityModel {
+Model : EntityModel {
 
 }
 
