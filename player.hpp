@@ -14,6 +14,8 @@
 
         virtual void play() = 0;
         bool hasLost();
+
+        std::string getName() { return name; }
     };
 
     std::ostream& operator<<(std::ostream&, const Player&);

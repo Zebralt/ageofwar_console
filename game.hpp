@@ -13,22 +13,31 @@
 
         int nbturns;
         int currentTurn;
+        int battlefieldLength;
 
         std::vector<Model> models;
-        std::vector<Unit*> units;
+        int redCursor, blueCursor; /* positions des unités de A et B les plus avancées */
+		Unit *battlefieldUnits; /*Représentation du terrain et des unités présentes */
 
     public:
-        Game(Player&, Player&, int nbt);
+        Game(Player&, Player&);
 
         int hasEnded();
         Player& getCurrentPlayer();
 
+        Unit* getUnits();
+
+        int getEnemyCursor(Player&);
+
+        int getDirection(Player&);
+
+        int getCursor(Player&);
+
         void addModel(Model);
-        const std::vector<Unit*> getUnits();
 
-        int checkPosition(int);
+        bool checkPosition(int);
 
-        bool nextTurn();
+        bool runPhases(Player&);
 
         bool purchase(Player&, Model&);
 
@@ -37,7 +46,9 @@
 
         Player& getWinner();
 
-        bool loadModels();
+        bool loadConfig();
+
+        friend bool operator==(Player& p, Player& q);
     };
 
 #endif // game_hpp__

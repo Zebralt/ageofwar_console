@@ -14,6 +14,7 @@
         Player& owner;
         int health;
         int pos;
+        int remainingActions = model.nbActions;
 
     public:
         Unit(Player&,Model&);
@@ -34,25 +35,14 @@
     };
 
 
-    class HostileUnit : public Unit {
-        protected:
+    class CombatUnit : public Unit {
+        private:
         public:
-            HostileUnit(Player&, HostileModel&);
-            std::vector<Unit*> checkLineOfSight(std::vector<Unit*>);
+            CombatUnit(Player&, CombatUnitModel&);
+            std::vector<Unit*> checkLineOfSight(Unit*,int,int);
             bool attack(Unit&);
-    };
-
-
-    class Building : public Unit {
-        public:
-
-    };
-
-    class MobileUnit : public Unit {
-    private:
-    public:
-        MobileUnit(Player&, MobileModel&);
-        bool advance(Game&); // mobile
+            bool advance(Game&); // mobile
+            virtual int engage(Game&);
     };
 
 #endif // unit_hpp__

@@ -9,7 +9,7 @@ int main()
 {
     Human red("Red");
     Human blue("Blue");
-    Game aowg(red,blue,100);
+    Game aowg(red,blue);
 
     // main loop would look like this :
 

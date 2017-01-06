@@ -3,52 +3,41 @@
 
 #include <string>
 
+    public enum ACTION { ATTACK, MOVE };
+
     class Model {
     protected:
         std::string name;
         int maxHP = 10;
         int price = 0;
+        int nbActions = 0;
+        ACTION* actions;
 
     public:
 
         friend class Unit;
 
-        Model(std::string name, int maxHP, int price);
+        Model(std::string name, int maxHP, int price, int nbActions);
 
         int getMaxHealth();
+        std::string getName();
+        int getPrice();
 
         virtual ~Model() {}
     };
 
-    class HostileModel : public virtual Model {
+    class CombatUnitModel : public virtual Model {
         protected:
-
             int attackScore = 1;
-            int range = 1;          // portÃ©e maximale
-            int exclusiveRange = 0; // portÃ©e minimale
-            int trample = 0;        // aea of effect
+            int range = 1;          // portée maximale
+            int exclusiveRange = 0; // portée minimale
+            int trample = 0;        // area of effect
 
         public:
-            friend class HostileUnit;
-            HostileModel(std::string name, int maxHP, int price, int attackScore, int range, int exclusiveRange);
+            friend class CombatUnit;
 
-            ~HostileModel()  {}
+            CombatUnitModel(std::string name, int maxHP, int price, int nbActions, int attackScore, int range, int exclusiveRange);
+
+            ~CombatUnitModel() {}
     };
-
-
-    class MobileModel : public virtual Model {
-        private:
-            int speed = 0;
-        public:
-
-            friend class MobileUnit;
-
-            MobileModel(std::string name, int maxHP, int price, int attackScore, int range, int exclusiveRange, int speed);
-
-            void setSpeed(int);
-            int getSpeed();
-
-            ~MobileModel() {}
-    };
-
 #endif

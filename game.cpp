@@ -3,10 +3,22 @@
 #include "unit.hpp"
 #include "game.hpp"
 
-    Game::Game(Player& b, Player& r, int nbt = 0) : red(r), blue(b), nbturns(nbt) {
+#include <stdlib.h>
 
-        loadModels();
+    bool operator==(Player& p, Player& q) {
+        return p.getName() == q.getName();
+    }
 
+ //getDirection(joueur) > si b 0 sinon 1
+ //getEnemyCursor > renvoie curseur de l'autre joueur
+
+    Game::Game(Player& b, Player& r) : red(r), blue(b)
+    {
+        loadConfig();
+        currentTurn=0;
+        battlefieldUnits=(Unit*)malloc(battlefieldLength);
+        redCursor=battlefieldLength-1;
+        blueCursor=0;
     }
 
     int Game::hasEnded() {
@@ -21,16 +33,10 @@
         models.push_back(um);
     }
 
-    const std::vector<Unit*> Game::getUnits() {
-        return units;
-    }
-
-    int Game::checkPosition(int pos) {
-        int checked = 0;
-        for (std::vector<Unit*>::iterator it = units.begin(); it != units.end(); ++it) {
-            checked += ((*it)->getPosition() == pos);
-        }
-        return checked;
+    bool Game::checkPosition(int pos) {
+		if (&battlefieldUnits[pos]==nullptr)
+			return true;
+		return false;
     }
 
     Player& Game::getBlue() {
@@ -45,7 +51,37 @@
         return blue;
     }
 
-    bool Game::loadModels() {
+    Unit* Game::getUnits() {
+        return battlefieldUnits;
+    }
+
+    bool Game::loadConfig() {
         //read info.cfg
+        //initialiser la taille du terrain, nbtoursmax
         return true;
+    }
+
+    int Game::getEnemyCursor(Player& p) {
+        if (p == red) {
+            return blueCursor;
+        }
+        else return redCursor;
+    }
+
+    int Game::getDirection(Player& p) {
+        return p == blue;
+    }
+
+    bool Game::runPhases(Player& currentPlayer) {
+        Unit* tmp;
+        int cursor = getCursor(currentPlayer);
+        int direction = getDirection(currentPlayer);
+        if (direction) {
+            for (int i=0;i<cursor;i++) {
+
+            }
+        }
+        else {
+            fo (int i=battlefieldLength-1;i>=;i--)
+        }
     }
