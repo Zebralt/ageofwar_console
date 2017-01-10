@@ -14,8 +14,7 @@
 
 #define PARSING             0
 #define PARSING_METADATA    1
-#define PARSING_UNITS       2
-#define PARSING_ENTITY      3
+#define PARSING_MODELS      2
 
 #define UNKNOWN_HEADER      1
 #define SYNTAX_ERROR        2
@@ -33,13 +32,16 @@
         Player& red;
         Player& blue;
 
-        int nbturns;
-        int currentTurn;
-        int battlefieldLength;
+        int nbturns = 0;
+        int currentTurn = 0;
+        int battlefieldLength = 0;
+        int goldPerTurn = 0;
+        int nbPhases = 3; /* nombre de phases d'action */
 
         std::vector<Model> models;
-        int redCursor, blueCursor; /* positions des unitÃ©s de A et B les plus avancÃ©es */ /* du front en somme */
-		Unit *battlefieldUnits; /*ReprÃ©sentation du terrain et des unitÃ©s prÃ©sentes */
+        int redCursor = 0;
+        int blueCursor = 0; /* positions des unités de A et B les plus avancées */ /* du front en somme */
+		Unit* battlefieldUnits; /*Représentation du terrain et des unités présentes */
 
     public:
         Game(Player&, Player&);
@@ -76,12 +78,9 @@
 
         short status();
 
-        friend bool operator==(Player& p, Player& q);
+        friend class Parser;
     };
 
-    std::vector<std::string> split(std::string,char);
-    std::vector<std::string> parseFile(std::string);
-    std::vector<std::string> getWords(std::string);
-    void removeChar(std::string&,char);
+    bool operator==(Player& p, Player& q);
 
 #endif // game_hpp__

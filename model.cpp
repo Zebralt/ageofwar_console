@@ -23,6 +23,10 @@
         return price;
     }
 
+    void Model::addAction(Action a) {
+        actions.push_back(a);
+    }
+
     /// COMBAT_UNIT_MODEL : CLASS
 
     CombatUnitModel::CombatUnitModel(std::string name, int maxHP, int price, int nbActions, int attackScore, int range, int exclusiveRange)

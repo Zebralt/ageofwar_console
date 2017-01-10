@@ -2,8 +2,9 @@
 #define model_hpp__
 
 #include <string>
+#include <vector>
 
-    public enum ACTION { ATTACK, MOVE };
+    enum Action { ATTACK, MOVE, IDLE };
 
     class Model {
     protected:
@@ -11,7 +12,7 @@
         int maxHP = 10;
         int price = 0;
         int nbActions = 0;
-        ACTION* actions;
+        std::vector<Action> actions;
 
     public:
 
@@ -19,9 +20,13 @@
 
         Model(std::string name, int maxHP, int price, int nbActions);
 
+        void addAction(Action);
+
         int getMaxHealth();
         std::string getName();
         int getPrice();
+
+        std::vector<Action>& getActions() { return actions; }
 
         virtual ~Model() {}
     };

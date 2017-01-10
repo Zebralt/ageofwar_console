@@ -14,7 +14,8 @@ int main()
     // main loop would look like this :
 
     while(!aowg.hasEnded()) {
-
+        aowg.display();
+        aowg.runPhases(aowg.getBlue());
     }
 
     Player& winner = aowg.getWinner();

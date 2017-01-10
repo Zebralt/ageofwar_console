@@ -19,14 +19,18 @@
     public:
         Unit(Player&,Model&);
 
-        virtual int engage(Game&); // une action par temps t
+        virtual int engage(Game&); // try to attack
         void takeDamage(int);
         bool alive();
+
+        int haveRemainingActions() { return remainingActions; }
+        void act() { remainingActions--;}
 
         void setPosition(int);
         void setHealth(int);
 
         virtual void setModel(Model&);
+        Model& getModel() { return model; }
 
         int getHealth();
         int getPosition();
