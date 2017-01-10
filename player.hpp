@@ -6,7 +6,7 @@
     protected:
         std::string name;
         unsigned int gold = 0;
-
+        int health = 100;
         friend std::ostream& operator<<(std::ostream&, const Player&);
 
     public:
@@ -16,6 +16,7 @@
         bool hasLost();
 
         std::string getName() { return name; }
+        int getHealth() { return health; }
     };
 
     std::ostream& operator<<(std::ostream&, const Player&);
