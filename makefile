@@ -1,10 +1,13 @@
 CC=g++
 CFLAGS= -std=c++11
 
-ageofwar: main.o game.o unit.o player.o model.o
+ageofwar: main.o parser.o game.o unit.o player.o model.o
+
+parser: game.o model.o parser.cpp parser.hpp
+	$(CC) -o 
 
 game: unit.o player.o model.o game.cpp game.hpp
-	$(CC) -o game.o
+	$(CC) -o game.o $(CFLAGS)
 
 unit: player.o model.o unit.cpp unit.hpp
 	$(CC) -o unit.o -c unit.cpp player.o model.o $(CFLAGS)

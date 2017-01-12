@@ -1,3 +1,4 @@
+#include "model.hpp"
 #include "game.hpp"
 #include "parser.hpp"
 
@@ -7,6 +8,13 @@
 #include <fstream>
 
 #define stringList std::vector<std::string>
+#define print std::cout <<
+#define newLine std::cout << std::endl;
+#define lend std::endl
+
+#define GET_ACTION(str) (str == "MOVE"?MOVE:str == "ATTACK"?ATTACK:IDLE)
+
+typedef unsigned int uint;
 
     Parser::Parser(Game& g) : game(g) {
     }
@@ -19,12 +27,12 @@
     bool Parser::parse(std::string path) {
         short status = PARSING;
         std::vector<std::string> content = parseFile(path);
-        for (unsigned int i=0; i<content.size(); i++) {
+        for (uint i=0; i<content.size(); i++) {
             std::string& str = content[i];
             Parser::removeChar(str,' ');
         }
 
-        for (unsigned int i=0; i<content.size(); i++) {
+        for (uint i=0; i<content.size(); i++) {
             std::string& line = content[i];
             std::cout << std::endl;
             if (line.empty() || line[0] == '#') continue; /* ligne vide ou commentaire */
@@ -60,9 +68,34 @@
                 else {
                     std::string name = spl[0];
                     std::string stats = spl[1];
-                    std::string actions;
-                    int nbActions;
-                    std::string flags;
+                    int statValues[6] = {0};
+                    stringList statList = split(stats,',');
+                    if (statList.size() < 4) {
+                        print ":Stats: incorrect syntax : " << stats << lend;
+                        continue;
+                    }
+                    else {
+                        for (uint i=0; i<statList.size() && i < 6; i++) {
+                            statValues[i] = atoi(statList[i].c_str());
+                        }
+                    }
+                    Model newModel(name, statValues);
+                    if (spl.size() >= 4) {
+                        stringList actionList = split(spl[2],',');
+                        for (uint i=0; i<actionList.size(); i++) {
+                            newModel.actions.push_back(GET_ACTION(actionList[i]));
+                        }
+                        newModel.nbActions = atoi(spl[3].c_str());
+                    }
+                    else {
+                        print ":Actions: incorrect syntax." << lend;
+                        continue;
+                    }
+
+                    if (spl.size() >= 5) {
+                        std::string flags = spl[4];
+                    }
+                    game.addModel(newModel);
                 }
             }
             else std::cout << ": no meaning : " << line;
@@ -105,7 +138,7 @@
 
     void Parser::removeChar(std::string& str, char a) {
         std::string output; output.reserve(str.length());
-        for (unsigned int i=0; i<str.length(); i++) {
+        for (uint i=0; i<str.length(); i++) {
             if (str[i] != a) output += str[i];
         }
         str = output;

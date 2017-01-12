@@ -17,6 +17,10 @@
 
         std::string getName() { return name; }
         int getHealth() { return health; }
+
+        int getGold() { return gold; }
+        void debit(int i) { gold -= i; }
+        void takeDamage(int i) { health -= i;}
     };
 
     std::ostream& operator<<(std::ostream&, const Player&);

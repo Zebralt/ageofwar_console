@@ -1,6 +1,8 @@
 #ifndef game_hpp__
-#define game_hpp__
+#define game_hpp_
+
 #include <vector>
+#include "parser.hpp"
 
 /// GAME STATUS FLAGS
 
@@ -19,9 +21,7 @@
 #define UNKNOWN_HEADER      1
 #define SYNTAX_ERROR        2
 
-/// CONFIG FILE FLAGS
-
-///
+#define NEW(type, nb) (type*) calloc((unsigned) nb,sizeof(type))
 
     class Player;
     class Model;
@@ -40,26 +40,32 @@
 
         std::vector<Model> models;
         int redCursor = 0;
-        int blueCursor = 0; /* positions des unités de A et B les plus avancées */ /* du front en somme */
-		Unit* battlefieldUnits; /*Représentation du terrain et des unités présentes */
+        int blueCursor = 0; /* positions des unitÃ©s de A et B les plus avancÃ©es */ /* du front en somme */
+		Unit** battlefieldUnits; /*ReprÃ©sentation du terrain et des unitÃ©s prÃ©sentes */
+        Unit** blueUnits;
+        Unit** redUnits;
 
+        bool addUnit(Unit&, Player&);
     public:
         Game(Player&, Player&);
 
         int hasEnded();
-        Player& getCurrentPlayer();
 
-        Unit* getUnits();
+        Unit** getUnits();
 
         int getEnemyCursor(Player&);
+
+        Player& getEnemy(Player&);
 
         int getDirection(Player&);
 
         int getCursor(Player&);
 
+        int getBattlefieldLength();
+
         void addModel(Model);
 
-        bool checkPosition(int);
+        bool checkPosition(int); /* check if position is free */
 
         bool runPhases(Player&);
 
@@ -74,11 +80,19 @@
 
         void display();
 
+        /* main function of game running */
         void update();
+
+        /* Met a jour les curseurs a la fin d'un tour */
+        void updateCursors();
 
         short status();
 
-        friend class Parser;
+        friend bool Parser::parse(std::string);
+
+        void listModels();
+
+        bool damageCastle(Player& p, int); // infliger des degats au chateau du joueur:
     };
 
     bool operator==(Player& p, Player& q);

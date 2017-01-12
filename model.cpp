@@ -2,12 +2,29 @@
 
     /// MODEL : CLASS
 
-    Model::Model(std::string name, int maxHP, int price, int nbActions) {
+    Model::Model(std::string name, int maxHP, int price, int nbActions, int attackScore, int range, int minimumRange, int trample)
+    {
 
         this->name = name;
         this->maxHP = maxHP;
         this->price = price;
         this->nbActions = nbActions;
+        this->attackScore = attackScore;
+        this->range = range;
+        this->minimumRange = minimumRange;
+        this->trample = trample;
+
+    }
+
+    Model::Model(std::string name, int* stats) {
+
+        this->name = name;
+        this->maxHP          = stats[0];
+        this->price          = stats[1];
+        this->attackScore    = stats[2];
+        this->range          = stats[3];
+        this->minimumRange = stats[4];
+        this->trample        = stats[5];
 
     }
 
@@ -23,17 +40,9 @@
         return price;
     }
 
-    void Model::addAction(Action a) {
-        actions.push_back(a);
-    }
-
-    /// COMBAT_UNIT_MODEL : CLASS
-
-    CombatUnitModel::CombatUnitModel(std::string name, int maxHP, int price, int nbActions, int attackScore, int range, int exclusiveRange)
-    : Model(name,maxHP,price,nbActions) {
-
-        this->attackScore = attackScore;
-        this->range = range;
-        this->exclusiveRange = exclusiveRange;
-
+    std::string Model::toString() {
+        std::string disp;
+        disp = "[" +name + "\nmaxHealth=" + std::to_string(maxHP) + "\nprice=" + std::to_string(price)
+        + "\nattackScore= " + std::to_string(attackScore) + "\nrange= " + std::to_string(range) + "\n]";
+        return disp;
     }

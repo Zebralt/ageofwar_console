@@ -19,9 +19,15 @@
     public:
         Unit(Player&,Model&);
 
-        virtual int engage(Game&); // try to attack
         void takeDamage(int);
         bool alive();
+
+        bool attackEnemyCastle(Game&);
+        bool checkForEnemyCastle(Game&); /* est-on a portee de la base ennemie ? */
+        std::vector<Unit*> checkLineOfSight(Unit**,int from, int ennemyCursor, int direction);
+        bool attack(Unit&);
+        bool advance(Game&); // mobile
+        int engage(Game&);
 
         int haveRemainingActions() { return remainingActions; }
         void act() { remainingActions--;}
@@ -30,23 +36,12 @@
         void setHealth(int);
 
         virtual void setModel(Model&);
-        Model& getModel() { return model; }
 
+        Model& getModel() { return model; }
         int getHealth();
         int getPosition();
 
         Player& getOwner();
-    };
-
-
-    class CombatUnit : public Unit {
-        private:
-        public:
-            CombatUnit(Player&, CombatUnitModel&);
-            std::vector<Unit*> checkLineOfSight(Unit*,int,int);
-            bool attack(Unit&);
-            bool advance(Game&); // mobile
-            virtual int engage(Game&);
     };
 
 #endif // unit_hpp__

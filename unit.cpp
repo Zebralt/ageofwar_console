@@ -29,10 +29,6 @@
         model = m;
     }
 
-    int Unit::engage(Game& g) {
-        return 1;
-    }
-
     /// COMBAT UNIT MODEL : CLASS
 
     /* Prend :
@@ -40,29 +36,25 @@
     - ptr : pointeur sur la première unité du joueur opposé
     - direction : la direction dans laquelle regarder (correspond au joueur) : 1 = blue, 0 = red
     */
-    std::vector<Unit*> CombatUnit::checkLineOfSight(Unit* units, int cursor, int direction) {
+    std::vector<Unit*> Unit::checkLineOfSight(Unit** units, int pos, int cursor, int direction) {
         std::vector<Unit*> spotted;
-        CombatUnitModel& mod = dynamic_cast<CombatUnitModel&>(model);
-        /*for (std::vector<Unit*>::iterator it = units.begin(); it != units.end(); ++it) {
-            if ((*it)->getPosition() > mod.exclusiveRange && (*it)->getPosition() <= mod.range)
-                spotted.push_back(*it);
-        }*/
-        for (int i=mod.exclusiveRange;i<mod.range;i++) {
-            if (direction) { if (i + pos >= cursor) {
-                spotted.push_back(&units[cursor + i]);
-            }}
-            else if (pos - i < cursor) {
-                spotted.push_back(&units[cursor - i]);
+        short ratio = (direction?1:-1);
+        if (
+            (direction && pos + ratio < cursor)
+        ||  (!direction && pos + ratio > cursor)
+        ) {} else
+        for (int i=model.minimumRange; i<model.range;i++) {
+            if ((direction && pos + ratio >= cursor) || (!direction && pos + ratio <= cursor)) {
+                if (units[i] != nullptr) spotted.push_back(units[i]);
             }
-
         }
         return spotted;
     }
 
-    bool CombatUnit::attack(Unit& unit) {
+    bool Unit::attack(Unit& unit) {
         if (!remainingActions) return 0;
         if (unit.alive()) {
-            unit.takeDamage(dynamic_cast<CombatUnitModel&>(model).attackScore);
+            unit.takeDamage(model.attackScore);
             return true;
         }
         else {
@@ -70,7 +62,7 @@
         }
     }
 
-    bool CombatUnit::advance(Game& g) {
+    bool Unit::advance(Game& g) {
         if (!remainingActions) return 0;
         int newpos = pos + (&owner==&g.getBlue()?1:-1);
         if (g.checkPosition(newpos)) {
@@ -82,8 +74,8 @@
         return true;
     }
 
-    int CombatUnit::engage(Game& game) {
-       std::vector<Unit*> potential_targets = checkLineOfSight(game.getUnits(),game.getEnemyCursor(owner),game.getDirection(owner));
+    int Unit::engage(Game& game) {
+       std::vector<Unit*> potential_targets = checkLineOfSight(game.getUnits(), pos, game.getEnemyCursor(owner),game.getDirection(owner));
         if (potential_targets.size()) {
             for (std::vector<Unit*>::iterator it = potential_targets.begin(); it != potential_targets.end(); ++it) {
                 if (attack(**it)) return 1 + (*it)->alive();
@@ -92,3 +84,17 @@
         return 0;
     }
 
+    bool Unit::checkForEnemyCastle(Game& game) {
+        int dir = game.getDirection(owner);
+        if ((dir && game.getEnemyCursor(owner) < 0) || (!dir && game.getEnemyCursor(owner) >= game.getBattlefieldLength())) {
+            if ((dir && pos + model.range >= game.getBattlefieldLength()-1) || (!dir && pos - model.range <= 0)) {
+                attackEnemyCastle(game);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    bool Unit::attackEnemyCastle(Game& game) {
+        return game.damageCastle(owner, model.attackScore);
+    }
