@@ -41,9 +41,9 @@
         std::vector<Model> models;
         int redCursor = 0;
         int blueCursor = 0; /* positions des unités de A et B les plus avancées */ /* du front en somme */
-		Unit** battlefieldUnits; /*Représentation du terrain et des unités présentes */
-        Unit** blueUnits;
-        Unit** redUnits;
+//		std::vector<Unit> battlefieldUnits; /*Représentation du terrain et des unités présentes */
+        std::vector<Unit*> blueUnits;
+        std::vector<Unit*> redUnits;
 
         bool addUnit(Unit&, Player&);
     public:
@@ -51,7 +51,10 @@
 
         int hasEnded();
 
-        Unit** getUnits();
+        std::vector<Unit*> getUnits();
+        std::vector<Unit*>& getUnits(Player& p);
+
+        std::vector<Model>& getModels();
 
         int getEnemyCursor(Player&);
 
@@ -81,7 +84,7 @@
         void display();
 
         /* main function of game running */
-        void update();
+        void unravel();
 
         /* Met a jour les curseurs a la fin d'un tour */
         void updateCursors();
@@ -93,6 +96,10 @@
         void listModels();
 
         bool damageCastle(Player& p, int); // infliger des degats au chateau du joueur:
+
+        // remove units if dead
+        void checkUnits();
+
     };
 
     bool operator==(Player& p, Player& q);

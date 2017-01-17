@@ -13,26 +13,28 @@
         Model& model;
         Player& owner;
         int health;
-        int pos;
+        int pos = -1;
         int remainingActions = model.nbActions;
 
     public:
         Unit(Player&,Model&);
+        Unit();
+        Unit(const Unit& u);
 
         void takeDamage(int);
         bool alive();
 
         bool attackEnemyCastle(Game&);
         bool checkForEnemyCastle(Game&); /* est-on a portee de la base ennemie ? */
-        std::vector<Unit*> checkLineOfSight(Unit**,int from, int ennemyCursor, int direction);
+        std::vector<Unit*> checkLineOfSight(std::vector<Unit*>,int from, int ennemyCursor, int direction);
         bool attack(Unit&);
         bool advance(Game&); // mobile
         int engage(Game&);
 
-        int haveRemainingActions() { return remainingActions; }
+        int haveRemainingActions();
         void act() { remainingActions--;}
 
-        void setPosition(int);
+        void setPosition(int i) { pos = i;};
         void setHealth(int);
 
         virtual void setModel(Model&);

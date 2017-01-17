@@ -2,7 +2,7 @@
 
     /// MODEL : CLASS
 
-    Model::Model(std::string name, int maxHP, int price, int nbActions, int attackScore, int range, int minimumRange, int trample)
+    Model::Model(std::string name, int maxHP, unsigned int price, int nbActions, int attackScore, int range, int minimumRange, int trample)
     {
 
         this->name = name;
@@ -36,7 +36,7 @@
         return name;
     }
 
-    int Model::getPrice() {
+    unsigned int Model::getPrice() {
         return price;
     }
 

@@ -14,7 +14,7 @@
     protected:
         std::string name;
         int maxHP = 10;
-        int price = 0;
+        unsigned int price = 0;
         int nbActions = 0;
         std::vector<Action> actions;
         int flags;
@@ -31,7 +31,7 @@
 
         Model(std::string name,
               int maxHP,
-              int price,
+              unsigned int price,
               int nbActions,
               int attackScore,
               int range,
@@ -39,10 +39,11 @@
               int trample = 0);
 
         Model(std::string, int*);
+        Model() {}
 
         int getMaxHealth();
         std::string getName();
-        int getPrice();
+        unsigned int getPrice();
 
         std::vector<Action>& getActions() { return actions; }
 

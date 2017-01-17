@@ -8,6 +8,12 @@
         health = um.maxHP;
     }
 
+    Unit::Unit(Unit const& u) : model(u.model), owner(u.owner) {
+        health = u.health;
+        pos = u.pos;
+        remainingActions = u.remainingActions;
+    }
+
     void Unit::takeDamage(int damage) {
         // apply damage modifiers if there is any ?
         health -= damage;
@@ -29,6 +35,10 @@
         model = m;
     }
 
+    int Unit::haveRemainingActions() {
+        return remainingActions;
+    }
+
     /// COMBAT UNIT MODEL : CLASS
 
     /* Prend :
@@ -36,16 +46,19 @@
     - ptr : pointeur sur la première unité du joueur opposé
     - direction : la direction dans laquelle regarder (correspond au joueur) : 1 = blue, 0 = red
     */
-    std::vector<Unit*> Unit::checkLineOfSight(Unit** units, int pos, int cursor, int direction) {
+    std::vector<Unit*> Unit::checkLineOfSight(std::vector<Unit*> units, int pos, int cursor, int direction) {
         std::vector<Unit*> spotted;
         short ratio = (direction?1:-1);
-        if (
+        if ( // si on n'atteint meme pas la premiere unite ennemie
             (direction && pos + ratio < cursor)
         ||  (!direction && pos + ratio > cursor)
-        ) {} else
+        ) {
+            return spotted;
+        }
         for (int i=model.minimumRange; i<model.range;i++) {
             if ((direction && pos + ratio >= cursor) || (!direction && pos + ratio <= cursor)) {
-                if (units[i] != nullptr) spotted.push_back(units[i]);
+                //if (units[i] != nullptr) spotted.push_back(units[i]);
+                // TODO
             }
         }
         return spotted;
@@ -64,7 +77,7 @@
 
     bool Unit::advance(Game& g) {
         if (!remainingActions) return 0;
-        int newpos = pos + (&owner==&g.getBlue()?1:-1);
+        int newpos = pos + (owner==g.getBlue()?1:-1);
         if (g.checkPosition(newpos)) {
             return false;
         }
@@ -79,6 +92,7 @@
         if (potential_targets.size()) {
             for (std::vector<Unit*>::iterator it = potential_targets.begin(); it != potential_targets.end(); ++it) {
                 if (attack(**it)) return 1 + (*it)->alive();
+                //TODO
             }
         }
         return 0;

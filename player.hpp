@@ -1,6 +1,11 @@
 #ifndef player_hpp__
 #define player_hpp__
 #include <string>
+#include <vector>
+
+
+    class Game;
+    class Model;
 
     class Player {
     protected:
@@ -12,15 +17,18 @@
     public:
         Player(std::string);
 
-        virtual void play() = 0;
+        virtual void play(Game&) = 0;
         bool hasLost();
 
-        std::string getName() { return name; }
-        int getHealth() { return health; }
+        std::string getName();
+        int getHealth();
 
-        int getGold() { return gold; }
-        void debit(int i) { gold -= i; }
-        void takeDamage(int i) { health -= i;}
+        unsigned int getGold();
+        void debit(int i);
+        void takeDamage(int i);
+        virtual Model& buy(std::vector<Model>) = 0;
+
+        void give(unsigned int i) { gold += i;}
     };
 
     std::ostream& operator<<(std::ostream&, const Player&);
@@ -30,7 +38,8 @@
     public:
         Human(std::string);
 
-        void play();
+        void play(Game&);
+        Model& buy(std::vector<Model>);
     };
 
     class AI : public Player {
@@ -39,7 +48,8 @@
         AI(std::string);
         AI();
 
-        void play();
+        void play(Game&);
+        Model& buy(std::vector<Model>);
     };
 
 #endif // player_hpp__
