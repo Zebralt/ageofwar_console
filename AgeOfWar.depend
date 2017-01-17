@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1484201968 source:e:\documents\travail\pps\et4\s7\cpp\ageofwar\main.cpp
+	<iostream>
+	"player.hpp"
+	"unit.hpp"
+	"game.hpp"
+
+1484630256 e:\documents\travail\pps\et4\s7\cpp\ageofwar\player.hpp
+	<string>
+
+1484201968 e:\documents\travail\pps\et4\s7\cpp\ageofwar\unit.hpp
+	<vector>
+	<string>
+	"model.hpp"
+
+1484201968 e:\documents\travail\pps\et4\s7\cpp\ageofwar\model.hpp
+	<string>
+	<vector>
+	"parser.hpp"
+
+1484201968 e:\documents\travail\pps\et4\s7\cpp\ageofwar\parser.hpp
+	<vector>
+	<string>
+
+1484201968 e:\documents\travail\pps\et4\s7\cpp\ageofwar\game.hpp
+	<vector>
+	"parser.hpp"
+
+1484501047 source:e:\documents\travail\pps\et4\s7\cpp\ageofwar\game.cpp
+	"player.hpp"
+	"model.hpp"
+	"unit.hpp"
+	"game.hpp"
+	"parser.hpp"
+	<iostream>
+	<cstdlib>
+

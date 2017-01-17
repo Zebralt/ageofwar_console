@@ -42,7 +42,7 @@
     }
 
     bool Game::checkPosition(int pos) {
-		if (&battlefieldUnits[pos]==nullptr)
+		if (&battlefieldUnits[pos]==0)     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			return true;
 		return false;
     }
@@ -146,7 +146,7 @@
 
     void Game::listModels() {
         print "Registered models:" << lend;
-        for (uint i=0; i<models.size(); i++) {
+        for (int i=0; i<models.size(); i++) {
             print models[i].toString() << lend;
         }
         newLine;
@@ -179,11 +179,11 @@
         short sred  = 0x10;
         short searching = sblue | sred;
         for (int i=0;i<battlefieldLength && searching;i++) {
-            if (sblue & searching && blueUnits[i] != nullptr) {
+            if (sblue & searching && blueUnits[i] != 0) {     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 blueCursor = i;
                 searching -= sblue;
             }
-            if (sred & searching && redUnits[battlefieldLength-1-i] != nullptr) {
+            if (sred & searching && redUnits[battlefieldLength-1-i] != 0) {     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 redCursor = battlefieldLength-1-i;
                 searching -= sred;
             }

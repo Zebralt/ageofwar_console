@@ -30,15 +30,17 @@
     public:
         Human(std::string);
 
+        Model buy(std::vector<Model>);
         void play();
     };
 
-    class AI : public Player {
+    class AI : public Player
+    {
 
     public:
         AI(std::string);
         AI();
-
+        Model buy();
         void play();
     };
 
