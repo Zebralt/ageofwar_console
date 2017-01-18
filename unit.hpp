@@ -43,8 +43,15 @@
         Model& getModel() { return model; }
         int getHealth();
         int getPosition() { return pos; }
+        std::string getName() { return model.getName(); }
 
         Player& getOwner();
+
+        std::string toString();
+
+        friend std::ostream& operator<<(std::ostream&, const Unit&);
     };
+
+    std::ostream& operator<<(std::ostream& o, const Unit& u);
 
 #endif // unit_hpp__

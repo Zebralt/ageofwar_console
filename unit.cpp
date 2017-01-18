@@ -2,6 +2,8 @@
 #include "game.hpp"
 #include "unit.hpp"
 
+#include <iostream>
+
     /// UNIT : CLASS
 
     Unit::Unit(Player& player, Model& um) : model(um), owner(player) {
@@ -39,11 +41,9 @@
         return remainingActions;
     }
 
-    /// COMBAT UNIT MODEL : CLASS
-
     /* Prend :
-    - units : le tableau d'unitÃ©s de game
-    - ptr : pointeur sur la premiÃ¨re unitÃ© du joueur opposÃ©
+    - units : le tableau d'unités de game
+    - ptr : pointeur sur la première unité du joueur opposé
     - direction : la direction dans laquelle regarder (correspond au joueur) : 1 = blue, 0 = red
     */
     std::vector<std::shared_ptr<Unit>> Unit::checkLineOfSight(std::vector<std::shared_ptr<Unit>> units, int pos, int cursor, int direction) {
@@ -78,13 +78,14 @@
     bool Unit::advance(Game& g) {
         if (!remainingActions) return 0;
         int newpos = pos + (owner==g.getBlue()?1:-1);
-        if (g.checkPosition(newpos)) {
+        std::cout << toString() << ": trying to move from " << pos << " to " << newpos << std::endl;
+        if (g.positionTaken(newpos)) {
             return false;
         }
         else {
             pos = newpos;
+            return true;
         }
-        return true;
     }
 
     int Unit::engage(Game& game) {
@@ -112,3 +113,14 @@
     bool Unit::attackEnemyCastle(Game& game) {
         return game.damageCastle(owner, model.attackScore);
     }
+
+    std::string Unit::toString() {
+        std::string fin;
+        fin += getName() + "(" + std::to_string(pos) + ")";
+        return fin;
+    }
+
+   /* std::ostream& operator<<(std::ostream& o, const Unit& u) {
+        o << u.toString();
+        return o;
+    }*/

@@ -37,6 +37,7 @@ int main()
     //initFile(AowFile, aowg);
 
     //if (false)
+
     while(!aowg.hasEnded()) {
         std::cout << '{';
         aowg.display();
@@ -82,7 +83,7 @@ int main()
 //    {
 //        file << endl;
 //    }
-//    //UnitÃ©s rouges
+//    //Unités rouges
 //    for(i=0; i<g.getCursor(red) ; i++)
 //    {
 //        if(g.getUnits()[i]==nullptr)   {file << " _ ";}
@@ -95,7 +96,7 @@ int main()
 //        file << " _ ";
 //    }
 //    file << "\t";
-//    //UnitÃ©s bleues
+//    //Unités bleues
 //    for(i=g.getCursor(blue); i<g.getBattlefieldLength() ; i++)
 //    {
 //        if(g.getUnits()[i]==nullptr)   {file << " _ ";} /*!!!!!!!!!!!!!!!!!!!!!!!!!!*/

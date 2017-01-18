@@ -41,8 +41,8 @@
 
         std::vector<Model> models;
         int redCursor = 0;
-        int blueCursor = 0; /* positions des unitÃ©s de A et B les plus avancÃ©es */ /* du front en somme */
-//		std::vector<Unit> battlefieldUnits; /*ReprÃ©sentation du terrain et des unitÃ©s prÃ©sentes */
+        int blueCursor = 0; /* positions des unités de A et B les plus avancées */ /* du front en somme */
+//		std::vector<Unit> battlefieldUnits; /*Représentation du terrain et des unités présentes */
         std::vector<std::shared_ptr<Unit>> blueUnits;
         std::vector<std::shared_ptr<Unit>> redUnits;
 
@@ -69,7 +69,7 @@
 
         void addModel(Model);
 
-        bool checkPosition(int); /* check if position is free */
+        bool positionTaken(int); /* check if position is free */
 
         bool runPhases(Player&);
 

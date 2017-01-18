@@ -15,6 +15,8 @@
 #define ask(p) p.play()
 #define say if(VERBOSE)
 
+typedef unsigned int uint;
+
 bool VERBOSE = true;
 
     bool operator==(Player& p, Player& q) {
@@ -41,13 +43,21 @@ bool VERBOSE = true;
         models.push_back(um);
     }
 
-    bool Game::checkPosition(int pos) {
+    /*std::shared_ptr<Unit> Game::positionTaken(int pos) {
         std::vector<std::shared_ptr<Unit>> units = getUnits();
 		for (unsigned int i=0;i<units.size();i++) {
             if (units[i]->getPosition() == pos)
-                return false;
+                return units[i];
 		}
-		return true;
+		return nullptr;
+    }*/
+     bool Game::positionTaken(int pos) {
+        std::vector<std::shared_ptr<Unit>> units = getUnits();
+		for (unsigned int i=0;i<units.size();i++) {
+            if (units[i]->getPosition() == pos)
+                return true;
+		}
+		return false;
     }
 
     Player& Game::getBlue() {
@@ -145,7 +155,7 @@ bool VERBOSE = true;
         std::cout << blue;
         for (int i=0;i<battlefieldLength;i++)
         {
-            if (!checkPosition(i)) std::cout << " a ";
+            if (0/*std::shared_ptr<Unit> un = positionTaken(i)*/) std::cout << " a ";// std::cout << un->getName();
             else std::cout << " _ ";
         }
         std::cout << red;
@@ -196,7 +206,7 @@ bool VERBOSE = true;
         int pos = (p == blue?0:battlefieldLength-1);
         u->setPosition(pos);
         std::vector<std::shared_ptr<Unit>>& lordUnits = (p == blue?blueUnits:redUnits);
-        if (checkPosition(pos)) {
+        if (!positionTaken(pos)) {
             lordUnits.push_back(u);
             say std::cout << "added unit" << std::endl;
             return true;
