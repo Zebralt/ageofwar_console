@@ -2,6 +2,7 @@
 #define game_hpp_
 
 #include <vector>
+#include <memory>
 #include "parser.hpp"
 
 /// GAME STATUS FLAGS
@@ -42,17 +43,17 @@
         int redCursor = 0;
         int blueCursor = 0; /* positions des unités de A et B les plus avancées */ /* du front en somme */
 //		std::vector<Unit> battlefieldUnits; /*Représentation du terrain et des unités présentes */
-        std::vector<Unit*> blueUnits;
-        std::vector<Unit*> redUnits;
+        std::vector<std::shared_ptr<Unit>> blueUnits;
+        std::vector<std::shared_ptr<Unit>> redUnits;
 
-        bool addUnit(Unit&, Player&);
+        bool addUnit(std::shared_ptr<Unit>, Player&);
     public:
         Game(Player&, Player&);
 
         int hasEnded();
 
-        std::vector<Unit*> getUnits();
-        std::vector<Unit*>& getUnits(Player& p);
+        std::vector<std::shared_ptr<Unit>> getUnits();
+        std::vector<std::shared_ptr<Unit>>& getUnits(Player& p);
 
         std::vector<Model>& getModels();
 

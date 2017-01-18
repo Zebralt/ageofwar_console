@@ -12,7 +12,24 @@
 #define newLine std::cout << std::endl;
 #define lend std::endl
 
-#define GET_ACTION(str) (str == "MOVE"?MOVE:str == "ATTACK"?ATTACK:IDLE)
+//#define GET_ACTION(str) (str == "MOVE"?MOVE:str == "ATTACK"?ATTACK:IDLE)
+#define GET_ACTION_STR(a) (a == ATTACK?"ATTACK":a == MOVE?"MOVE":"IDLE")
+
+Action GET_ACTION(std::string str) {
+    if (str == "ATTACK") {
+        return ATTACK;
+    }
+    if (str == "MOVE") {
+        return MOVE;
+    }
+    if (str == "IDLE") {
+        return IDLE;
+    }
+    else {
+        std::cout << str << " is not an action !" << std::endl;
+        return IDLE;
+    }
+}
 
 typedef unsigned int uint;
 
@@ -30,11 +47,12 @@ typedef unsigned int uint;
         for (uint i=0; i<content.size(); i++) {
             std::string& str = content[i];
             Parser::removeChar(str,' ');
+            Parser::removeChar(str, '\t');
         }
 
         for (uint i=0; i<content.size(); i++) {
             std::string& line = content[i];
-            std::cout << std::endl;
+            //std::cout << std::endl;
             if (line.empty() || line[0] == '#') continue; /* ligne vide ou commentaire */
 
             /* is it a header ? */
@@ -42,10 +60,10 @@ typedef unsigned int uint;
             if (line[0] == '[') {
                 std::string header = line.substr(1,line.length()-2);
                 if (header == "Metadata") {
-                    status = PARSING_METADATA; std::cout << ":STATUS CHANGED TO PARSING_METADATA";
+                    status = PARSING_METADATA; //std::cout << ":STATUS CHANGED TO PARSING_METADATA";
                 }
                 else if (header == "Models") {
-                    status = PARSING_MODELS; std::cout << ":STATUS CHANGED TO PARSING_MODELS";
+                    status = PARSING_MODELS; //std::cout << ":STATUS CHANGED TO PARSING_MODELS";
                 }
                 else {
                     std::cout << ":UNKNOWN HEADER: " << header << std::endl;
@@ -82,8 +100,13 @@ typedef unsigned int uint;
                     Model newModel(name, statValues);
                     if (spl.size() >= 4) {
                         stringList actionList = split(spl[2],',');
+
                         for (uint i=0; i<actionList.size(); i++) {
                             newModel.actions.push_back(GET_ACTION(actionList[i]));
+                        }
+                        // si pas assez d'actions
+                        for (int i=actionList.size();i<game.nbPhases; i++) {
+                            newModel.actions.push_back(IDLE);
                         }
                         newModel.nbActions = atoi(spl[3].c_str());
                     }

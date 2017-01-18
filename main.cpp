@@ -11,6 +11,19 @@ using namespace std;
 void initFile(std::ofstream& file, Game&);
 void printBattlefield(std::ofstream& file, Game& g);
 
+struct Point { int x,y; Point(int a, int b) : x(a), y(b){}};
+
+std::ostream& operator<<(ostream& o, const Point& p) {
+    o << p.x << ':' << p.y;
+    return o;
+}
+
+void  inst(std::vector<Point*>& ae) {
+    Point* i = new Point(1,2);
+    std::cout << "instanciated " << i << std::endl;
+    ae.push_back(i);
+}
+
 int main()
 {
     AI red("Red");
@@ -23,7 +36,7 @@ int main()
     // main loop would look like this :
     //initFile(AowFile, aowg);
 
-
+    //if (false)
     while(!aowg.hasEnded()) {
         std::cout << '{';
         aowg.display();
@@ -31,8 +44,13 @@ int main()
         std::cout << '}' << std::endl;
     }
 
-    Player& winner = aowg.getWinner();
-    std::cout << winner << " won the game." << std::endl;
+    /*std::vector<Point*> ae;
+    inst(ae);
+    inst(ae);
+    for (unsigned int i=0;i<ae.size();i++)
+        std::cout << *ae[i] << std::endl;*/
+   /* Player& winner = aowg.getWinner();
+    std::cout << winner << " won the game." << std::endl;*/
 
     return 0;
 }

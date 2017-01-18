@@ -27,9 +27,9 @@
         return health;
     }
 
-    int Unit::getPosition() {
-        return pos;
-    }
+//    int Unit::getPosition() {
+//        return pos;
+//    }
 
     void Unit::setModel(Model& m) {
         model = m;
@@ -46,8 +46,8 @@
     - ptr : pointeur sur la première unité du joueur opposé
     - direction : la direction dans laquelle regarder (correspond au joueur) : 1 = blue, 0 = red
     */
-    std::vector<Unit*> Unit::checkLineOfSight(std::vector<Unit*> units, int pos, int cursor, int direction) {
-        std::vector<Unit*> spotted;
+    std::vector<std::shared_ptr<Unit>> Unit::checkLineOfSight(std::vector<std::shared_ptr<Unit>> units, int pos, int cursor, int direction) {
+        std::vector<std::shared_ptr<Unit>> spotted;
         short ratio = (direction?1:-1);
         if ( // si on n'atteint meme pas la premiere unite ennemie
             (direction && pos + ratio < cursor)
@@ -88,9 +88,9 @@
     }
 
     int Unit::engage(Game& game) {
-       std::vector<Unit*> potential_targets = checkLineOfSight(game.getUnits(), pos, game.getEnemyCursor(owner),game.getDirection(owner));
+       std::vector<std::shared_ptr<Unit>> potential_targets = checkLineOfSight(game.getUnits(), pos, game.getEnemyCursor(owner),game.getDirection(owner));
         if (potential_targets.size()) {
-            for (std::vector<Unit*>::iterator it = potential_targets.begin(); it != potential_targets.end(); ++it) {
+            for (std::vector<std::shared_ptr<Unit>>::iterator it = potential_targets.begin(); it != potential_targets.end(); ++it) {
                 if (attack(**it)) return 1 + (*it)->alive();
                 //TODO
             }

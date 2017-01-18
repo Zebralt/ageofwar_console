@@ -5,9 +5,6 @@
 #include <vector>
 #include "parser.hpp"
 
-    #define AOE 0x10
-    #define DISTANCE 0x100
-
     enum Action {ATTACK, MOVE, IDLE};
 
     class Model {

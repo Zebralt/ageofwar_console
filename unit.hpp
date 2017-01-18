@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <memory>
 #include "model.hpp"
 
     class Game;
@@ -26,7 +27,7 @@
 
         bool attackEnemyCastle(Game&);
         bool checkForEnemyCastle(Game&); /* est-on a portee de la base ennemie ? */
-        std::vector<Unit*> checkLineOfSight(std::vector<Unit*>,int from, int ennemyCursor, int direction);
+        std::vector<std::shared_ptr<Unit>> checkLineOfSight(std::vector<std::shared_ptr<Unit>>,int from, int ennemyCursor, int direction);
         bool attack(Unit&);
         bool advance(Game&); // mobile
         int engage(Game&);
@@ -41,7 +42,7 @@
 
         Model& getModel() { return model; }
         int getHealth();
-        int getPosition();
+        int getPosition() { return pos; }
 
         Player& getOwner();
     };

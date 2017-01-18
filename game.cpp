@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <memory>
 
 #define stringList std::vector<std::string>
 #define print std::cout <<
@@ -24,9 +25,6 @@ bool VERBOSE = true;
     {
         loadConfig();
         currentTurn = 0;
-       // battlefieldUnits = std::vector<Unit>(battlefieldLength);
-        blueUnits = std::vector<Unit*>(battlefieldLength);
-        redUnits = std::vector<Unit*>(battlefieldLength);
         redCursor = battlefieldLength-1;
         blueCursor = 0;
     }
@@ -44,8 +42,9 @@ bool VERBOSE = true;
     }
 
     bool Game::checkPosition(int pos) {
-		for (Unit* u : getUnits()) {
-            if (u->getPosition() == pos)
+        std::vector<std::shared_ptr<Unit>> units = getUnits();
+		for (unsigned int i=0;i<units.size();i++) {
+            if (units[i]->getPosition() == pos)
                 return false;
 		}
 		return true;
@@ -63,14 +62,14 @@ bool VERBOSE = true;
         return blue;
     }
 
-    std::vector<Unit*> Game::getUnits() {
-        std::vector<Unit*> units;
+    std::vector<std::shared_ptr<Unit>> Game::getUnits() {
+        std::vector<std::shared_ptr<Unit>> units;
         units.insert(std::end(units), std::begin(blueUnits), std::end(blueUnits));
         units.insert(std::end(units), std::begin(redUnits), std::end(redUnits));
         return units;
     }
 
-    std::vector<Unit*>& Game::getUnits(Player& p) {
+    std::vector<std::shared_ptr<Unit>>& Game::getUnits(Player& p) {
         return (p == blue ? blueUnits : redUnits);
     }
 
@@ -81,7 +80,7 @@ bool VERBOSE = true;
     bool Game::loadConfig() {
         Parser parser(*this);
         bool b = parser.parse("info.cfg");
-     //   listModels();
+        listModels();
         return b;
     }
 
@@ -103,18 +102,29 @@ bool VERBOSE = true;
     bool Game::runPhases(Player& currentPlayer) {
 //        int cursor = getCursor(currentPlayer);
         //int direction = getDirection(currentPlayer);
-        std::vector<Unit*>& units = getUnits(currentPlayer);
+        std::vector<std::shared_ptr<Unit>>& units = getUnits(currentPlayer);
         for (int phase=0;phase < nbPhases; phase++) {
-            for (std::vector<Unit*>::const_iterator it = units.begin(); it != units.end(); ++it) { /* reste a ajouter la gestion dans l'autre sens */
+            for (std::vector<std::shared_ptr<Unit>>::const_iterator it = units.begin(); it != units.end(); ++it) { /* reste a ajouter la gestion dans l'autre sens */
                 if (*it) {
-
                     if ((*it)->haveRemainingActions()) {
-                        switch ((*it)->getModel().getActions()[phase]) {
+                        switch ((*it)->getModel().getActions().at(phase)) {
                             case ATTACK:
-                                if ((*it)->engage(*this)) (*it)->act();
+                                if ((*it)->engage(*this)) {
+                                    (*it)->act();
+                                    say std::cout << "success in attacking" << std::endl;
+                                }
+                                else {
+                                    say std::cout << "couldn't attack" << std::endl;
+                                }
                             break;
                             case MOVE:
-                                if ((*it)->advance(*this)) (*it)->act();
+                                if ((*it)->advance(*this)) {
+                                    (*it)->act();
+                                    say std::cout << "success in moving" << std::endl;
+                                }
+                                else {
+                                    say std::cout << "couldn't move" << std::endl;
+                                }
                             break;
                             case IDLE:
                             default:
@@ -150,12 +160,11 @@ bool VERBOSE = true;
         runPhases(red);
         red.play(*this);
         checkUnits();
-        updateCursors();
+        //updateCursors();
         currentTurn++;
     }
 
     short Game::status() {
-        unravel();
         if (!red.getHealth() && !blue.getHealth()) return DRAW;
         else if (!red.getHealth() && blue.getHealth()) return SETTLED & BLUE_WINS;
         else if (red.getHealth() && !blue.getHealth()) return SETTLED & RED_WINS;
@@ -174,7 +183,7 @@ bool VERBOSE = true;
     bool Game::purchase(Player& p, Model& m) {
         say std::cout << p.getName() << " is trying to buy " << m.getName() << std::endl;
         if (p.getGold() >= m.getPrice()) {
-            Unit u(p,m);
+            std::shared_ptr<Unit> u(new Unit(p,m));
             if (addUnit(u,p)) {
                 p.debit(m.getPrice());
                 return true;
@@ -183,12 +192,12 @@ bool VERBOSE = true;
         return false;
     }
 
-    bool Game::addUnit(Unit& u, Player& p) {
+    bool Game::addUnit(std::shared_ptr<Unit> u, Player& p) {
         int pos = (p == blue?0:battlefieldLength-1);
-        u.setPosition(pos);
-        std::vector<Unit*>& lordUnits = (p == blue?blueUnits:redUnits);
+        u->setPosition(pos);
+        std::vector<std::shared_ptr<Unit>>& lordUnits = (p == blue?blueUnits:redUnits);
         if (checkPosition(pos)) {
-            lordUnits.push_back(&u);
+            lordUnits.push_back(u);
             say std::cout << "added unit" << std::endl;
             return true;
         }

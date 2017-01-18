@@ -1,5 +1,7 @@
 #include "model.hpp"
 
+#define GET_ACTION_STR(a) (a == ATTACK?"ATTACK":a == MOVE?"MOVE":"IDLE")
+
     /// MODEL : CLASS
 
     Model::Model(std::string name, int maxHP, unsigned int price, int nbActions, int attackScore, int range, int minimumRange, int trample)
@@ -42,7 +44,14 @@
 
     std::string Model::toString() {
         std::string disp;
-        disp = "[" +name + "\nmaxHealth=" + std::to_string(maxHP) + "\nprice=" + std::to_string(price)
-        + "\nattackScore= " + std::to_string(attackScore) + "\nrange= " + std::to_string(range) + "\n]";
+        disp = "[" +name + "\n";
+        disp += "maxHealth=" + std::to_string(maxHP) + "\nprice=" + std::to_string(price)
+        + "\nattackScore= " + std::to_string(attackScore) + "\nrange= " + std::to_string(range);
+        std::string act;
+        for (unsigned int i=0;i<actions.size();i++) {
+            act = act + GET_ACTION_STR(actions[i]) + " ";
+        }
+        disp += "\nActions: " + act;
+        disp += "\n]";
         return disp;
     }
