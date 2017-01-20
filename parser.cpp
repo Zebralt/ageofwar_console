@@ -1,20 +1,24 @@
+#include "parser.hpp"
 #include "model.hpp"
 #include "game.hpp"
-#include "parser.hpp"
 
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
 #include <fstream>
 
-#define stringList std::vector<std::string>
-#define print std::cout <<
-#define newLine std::cout << std::endl;
-#define lend std::endl
+typedef std::vector<std::string> stringList;
 
-//#define GET_ACTION(str) (str == "MOVE"?MOVE:str == "ATTACK"?ATTACK:IDLE)
-#define GET_ACTION_STR(a) (a == ATTACK?"ATTACK":a == MOVE?"MOVE":"IDLE")
 
+/// PARSER FLAGS
+
+#define PARSING             0
+#define PARSING_METADATA    1
+#define PARSING_MODELS      2
+
+#define GET_ACTION(str) (str == "MOVE"?MOVE:str == "ATTACK"?ATTACK:IDLE)
+
+/*
 Action GET_ACTION(std::string str) {
     if (str == "ATTACK") {
         return ATTACK;
@@ -29,7 +33,7 @@ Action GET_ACTION(std::string str) {
         std::cout << str << " is not an action !" << std::endl;
         return IDLE;
     }
-}
+}*/
 
 typedef unsigned int uint;
 
@@ -78,6 +82,7 @@ typedef unsigned int uint;
                      if (name == "nbturns") game.nbturns = val;
                 else if (name == "length")  game.battlefieldLength = val;
                 else if (name == "goldperturn") game.goldPerTurn = val;
+                else if (name == "initialgold") game.initialGold = val;
                 else std::cout << "unrecognized syntax : " << line << std::endl;
             }
             else if (status == PARSING_MODELS) {
@@ -89,7 +94,7 @@ typedef unsigned int uint;
                     int statValues[6] = {0};
                     stringList statList = split(stats,',');
                     if (statList.size() < 4) {
-                        print ":Stats: incorrect syntax : " << stats << lend;
+                        std::cout << ":Stats: incorrect syntax : " << stats << std::endl;
                         continue;
                     }
                     else {
@@ -111,7 +116,7 @@ typedef unsigned int uint;
                         newModel->nbActions = atoi(spl[3].c_str());
                     }
                     else {
-                        print ":Actions: incorrect syntax." << lend;
+                        std::cout << ":Actions: incorrect syntax." << std::endl;
                         continue;
                     }
 

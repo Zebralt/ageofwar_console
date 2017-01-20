@@ -43,6 +43,7 @@ int main(int argc, char* argv[])
 
     while(!aowg.hasEnded()) {
         std::cout << '{';
+        std::cout << "Turn " << aowg.getCurrentTurn() << ':' << std::endl;
         aowg.unravel();
         std::cout << '}' << std::endl;
     }

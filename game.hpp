@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <memory>
-#include "parser.hpp"
 #include "globals.hpp"
 
 /// GAME STATUS FLAGS
@@ -13,12 +12,6 @@
 #define RED_WINS    0x100
 #define SETTLED     0x1000
 #define DRAW        0x10
-
-/// PARSER FLAGS
-
-#define PARSING             0
-#define PARSING_METADATA    1
-#define PARSING_MODELS      2
 
 #define UNKNOWN_HEADER      1
 #define SYNTAX_ERROR        2
@@ -38,76 +31,61 @@
         int currentTurn = 0;
         int battlefieldLength = 0;
         int goldPerTurn = 0;
+        int initialGold = 0;
         int nbPhases = 3; /* nombre de phases d'action */
 
         std::vector<model_ptr> models;
-        int redCursor = 0;
-        int blueCursor = 0; /* positions des unités de A et B les plus avancées */ /* du front en somme */
-//		std::vector<Unit> battlefieldUnits; /*Représentation du terrain et des unités présentes */
         std::vector<unit_ptr> blueUnits;
         std::vector<unit_ptr> redUnits;
 
     public:
         Game(Player&, Player&);
 
-        int hasEnded();
-
-        std::vector<unit_ptr> getUnits();
-        std::vector<unit_ptr>& getUnits(Player& p);
-
-        std::vector<model_ptr>& getModels();
-
-        int getEnemyCursor(Player&);
-
-        Player& getEnemy(Player&);
-
-        int getDirection(Player&);
-
-        int getCursor(Player&);
-
-        int getBattlefieldLength();
-
-        void addModel(model_ptr);
-
-        bool positionTaken(int); /* check if position is free */
-
-        bool runPhases(Player&);
-
-        bool purchase(Player&, Model&);
-
-        Player& getBlue();
-        Player& getRed();
-
-        Player& getWinner();
-        
-        unit_ptr getUnitAt(int);
-
+		/// LOADER
         bool loadConfig();
+        void addModel(model_ptr);
+        friend class Parser;
 
-        void display();
-
-        /* main function of game running */
-        void unravel();
-
-        /* Met a jour les curseurs a la fin d'un tour */
-        void updateCursors();
-
+		/// GAME STATUS CHECK
+        int hasEnded();
         short status();
 
-        friend bool Parser::parse(std::string);
-
+		/// GETTERS
+        std::vector<unit_ptr> getUnits();
+        std::vector<unit_ptr>& getUnits(Player& p);
+        std::vector<model_ptr>& getModels();
+        int getDirection(Player&);
+        int getBattlefieldLength();
+        Player& getBlue();
+        Player& getRed();
+        Player* getWinner();
+        unit_ptr getUnitAt(int);
+        //int getEnemyCursor(Player&);
+        //Player& getEnemy(Player&);
+        //int getCursor(Player&);
+        int getCurrentTurn() { return currentTurn; }
+        
+        /// DISPLAY
+        void display();
         void listModels();
+		bool VERBOSE = 0;
+		void setVerbose(bool);
 
+		/// INGAME BEHAVIOURS
+        bool positionTaken(int); /* check if position is free */
+        bool runPhases(Player&);
+        bool purchase(Player&, Model&);
+        /* main function of game running */
+        void unravel();
         bool damageCastle(Player& p, int); // infliger des degats au chateau du joueur:
-
         // remove units if dead
         void checkUnits();
         bool addUnit(std::shared_ptr<Unit>, Player&);
-
-		bool VERBOSE = 0;
-		void setVerbose(bool);
-		
 		void killUnit(unit_ptr);
+		
+		/* bombarde un emplacement ; utilisé par TRAMPLE(AOE)CATAPULTE*/
+		std::vector<unit_ptr> bombard(int spot, int attackScore);
+		
     };
 
     bool operator==(Player& p, Player& q);

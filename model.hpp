@@ -3,7 +3,6 @@
 
 #include <string>
 #include <vector>
-#include "parser.hpp"
 
     enum Action {ATTACK = 0, MOVE, IDLE};
 
@@ -24,7 +23,7 @@
     public:
 
         friend class Unit;
-        friend bool Parser::parse(std::string);
+        friend class Parser;
 
         Model(std::string name,
               int maxHP,

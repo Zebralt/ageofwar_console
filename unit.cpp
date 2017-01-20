@@ -4,6 +4,7 @@
 #include "player.hpp"
 
 #include <iostream>
+#include <iomanip>
 
 	int Unit::instanceCount = 0;
 
@@ -66,7 +67,7 @@
         ) {
             return spotted;
         }*/
-		for (int i=model.minimumRange; i<model.range; i++) {
+		for (int i=model.minimumRange; i<=model.range; i++) {
 			unit_ptr unit = game.getUnitAt(pos+i*dir);
 			if (unit != nullptr) {
 				if (!(unit->getOwner() == owner)) {
@@ -86,16 +87,17 @@
         else {
             return false;
         }
+        /// TODO : TRAMPLE(AOE, CATAPULT)
     }
 
     bool Unit::advance(Game& g) {
         if (!remainingActions) return 0;
         int newpos = pos + (owner==g.getBlue()?1:-1);
-        if (g.positionTaken(newpos)) {
+        if (g.positionTaken(newpos) || newpos == (owner == g.getBlue()?g.getBattlefieldLength()-1:0)) {
             return false;
         }
         else {
-			if (g.VERBOSE) std::cout << '\t' << toString() << "moves to " << std::to_string(newpos) << std::endl;
+			if (g.VERBOSE) std::cout << '\t' << toString() << " moves to " << std::to_string(newpos) << std::endl;
             pos = newpos;
             return true;
         }
@@ -112,10 +114,8 @@
 				}
 			}
             for (std::vector<unit_ptr>::iterator it = potential_targets.begin(); it != potential_targets.end(); ++it) {
-                //if (attack(**it)) return 1 + (*it)->alive();
-                //TODO
                 if (attack(**it)) {
-					if (game.VERBOSE) std::cout << '\t' << (*it)->toString() << " took " << std::to_string(model.attackScore) << " damage : " << (*it)->healthRatio() << std::endl;
+					if (game.VERBOSE) std::cout << '\t' << std::setw(20) << toString() << "\tattacks\t" << std::setw(20) <<(*it)->toString() << "\tdealing\t" << std::to_string(model.attackScore) << " damage : " << (*it)->healthRatio() << std::endl;
 					return 1;	
 				}
             }
@@ -124,23 +124,25 @@
     }
 
     bool Unit::checkForEnemyCastle(Game& game) {
-        int dir = game.getDirection(owner);
+        /*int dir = game.getDirection(owner);
         if ((dir && game.getEnemyCursor(owner) < 0) || (!dir && game.getEnemyCursor(owner) >= game.getBattlefieldLength())) {
             if ((dir && pos + model.range >= game.getBattlefieldLength()-1) || (!dir && pos - model.range <= 0)) {
                 attackEnemyCastle(game);
                 return true;
             }
-        }
+        }*/
+        /// TODO SPOT ENEMY CASTLE
         return false;
     }
 
     bool Unit::attackEnemyCastle(Game& game) {
+		/// TODO ATTACK ENEMY CASTLE
         return game.damageCastle(owner, model.attackScore);
     }
 
     std::string Unit::toString() {
         std::string fin;
-        fin += owner.getName() + "::" + getName() + "(" + std::to_string(id) +")" + "(pos=" + std::to_string(pos) + ")";
+        fin += owner.getName() + "::" + getName() + "(" + std::to_string(id) +")";// + "(pos=" + std::to_string(pos) + ")";
         return fin;
     }
     

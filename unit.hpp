@@ -47,6 +47,7 @@
         int getHealth();
         int getPosition() { return pos; }
         std::string getName() { return model.getName(); }
+        int getId() { return id; }
 
         Player& getOwner() { return owner; }
 

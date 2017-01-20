@@ -1,0 +1,1872 @@
+{Turn 0:
+Blue gold=14 health=100                              Red gold=14 health=100
+                                                            
+   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue(2) bought model:archer(price=12)
+Blue gold=2 health=100                              Red gold=14 health=100
+   >                                                        
+   a   _   _   _   _   _   _   _   _   _   _   _   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+(Red)Phase 2: 
+Blue gold=2 health=100                              Red gold=14 health=100
+   >                                                        
+   a   _   _   _   _   _   _   _   _   _   _   _   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red(2) bought model:archer(price=12)
+Blue gold=2 health=100                              Red gold=2 health=100
+   >                                                       <
+   a   _   _   _   _   _   _   _   _   _   _   _   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 1:
+Blue gold=6 health=100                              Red gold=6 health=100
+   >                                                       <
+   a   _   _   _   _   _   _   _   _   _   _   _   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+	Blue::archer(0) moves to 1
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=6 health=100                              Red gold=6 health=100
+       >                                                   <
+   _   a   _   _   _   _   _   _   _   _   _   _   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(1) moves to 13
+(Red)Phase 2: 
+Blue gold=6 health=100                              Red gold=6 health=100
+       >                                               <    
+   _   a   _   _   _   _   _   _   _   _   _   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=6 health=100                              Red gold=6 health=100
+       >                                               <    
+   _   a   _   _   _   _   _   _   _   _   _   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 2:
+Blue gold=10 health=100                              Red gold=10 health=100
+       >                                               <    
+   _   a   _   _   _   _   _   _   _   _   _   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+	Blue::archer(0) moves to 2
+(Blue)Phase 2: 
+
+Blue move is 
+Blue(0) bought model:infantry(price=10)
+Blue gold=0 health=100                              Red gold=10 health=100
+   >       >                                           <    
+   i   _   a   _   _   _   _   _   _   _   _   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(1) moves to 12
+(Red)Phase 2: 
+Blue gold=0 health=100                              Red gold=10 health=100
+   >       >                                       <        
+   i   _   a   _   _   _   _   _   _   _   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red(0) bought model:infantry(price=10)
+Blue gold=0 health=100                              Red gold=0 health=100
+   >       >                                       <       <
+   i   _   a   _   _   _   _   _   _   _   _   _   a   _   i
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 3:
+Blue gold=4 health=100                              Red gold=4 health=100
+   >       >                                       <       <
+   i   _   a   _   _   _   _   _   _   _   _   _   a   _   i
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+	Blue::archer(0) moves to 3
+	Blue::infantry(2) moves to 1
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >       >                                   <       <
+   _   i   _   a   _   _   _   _   _   _   _   _   a   _   i
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(1) moves to 11
+	Red::infantry(3) moves to 13
+(Red)Phase 2: 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >       >                               <       <    
+   _   i   _   a   _   _   _   _   _   _   _   a   _   i   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >       >                               <       <    
+   _   i   _   a   _   _   _   _   _   _   _   a   _   i   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 4:
+Blue gold=8 health=100                              Red gold=8 health=100
+       >       >                               <       <    
+   _   i   _   a   _   _   _   _   _   _   _   a   _   i   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+	Blue::archer(0) moves to 4
+	Blue::infantry(2) moves to 2
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >       >                           <       <    
+   _   _   i   _   a   _   _   _   _   _   _   a   _   i   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(1) moves to 10
+	Red::infantry(3) moves to 12
+(Red)Phase 2: 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >       >                       <       <        
+   _   _   i   _   a   _   _   _   _   _   a   _   i   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >       >                       <       <        
+   _   _   i   _   a   _   _   _   _   _   a   _   i   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 5:
+Blue gold=12 health=100                              Red gold=12 health=100
+           >       >                       <       <        
+   _   _   i   _   a   _   _   _   _   _   a   _   i   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+	Blue::archer(0) moves to 5
+	Blue::infantry(2) moves to 3
+(Blue)Phase 2: 
+
+Blue move is 
+Blue(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=12 health=100
+   >           >       >                   <       <        
+   a   _   _   i   _   a   _   _   _   _   a   _   i   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(1) moves to 9
+	Red::infantry(3) moves to 11
+(Red)Phase 2: 
+Blue gold=0 health=100                              Red gold=12 health=100
+   >           >       >               <       <            
+   a   _   _   i   _   a   _   _   _   a   _   i   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=0 health=100
+   >           >       >               <       <           <
+   a   _   _   i   _   a   _   _   _   a   _   i   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 6:
+Blue gold=4 health=100                              Red gold=4 health=100
+   >           >       >               <       <           <
+   a   _   _   i   _   a   _   _   _   a   _   i   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+	Blue::archer(0) moves to 6
+	Blue::infantry(2) moves to 4
+	Blue::archer(4) moves to 1
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           >       >           <       <           <
+   _   a   _   _   i   _   a   _   _   a   _   i   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(1) spotted 1 enemies :
+		Blue::archer(0)
+	      Red::archer(1)	attacks	     Blue::archer(0)	dealing	3 damage : [5/8]
+(Red)Phase 1: 
+	Red::archer(1) moves to 8
+	Red::infantry(3) moves to 10
+	Red::archer(5) moves to 13
+(Red)Phase 2: 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           >       >       <       <           <    
+   _   a   _   _   i   _   a   _   a   _   i   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           >       >       <       <           <    
+   _   a   _   _   i   _   a   _   a   _   i   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 7:
+Blue gold=8 health=100                              Red gold=8 health=100
+       >           >       >       <       <           <    
+   _   a   _   _   i   _   a   _   a   _   i   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+	Blue::archer(0) spotted 1 enemies :
+		Red::archer(1)
+	     Blue::archer(0)	attacks	      Red::archer(1)	dealing	3 damage : [5/8]
+(Blue)Phase 1: 
+	Blue::archer(0) moves to 7
+	Blue::infantry(2) moves to 5
+	Blue::archer(4) moves to 2
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >           >       >   <       <           <    
+   _   _   a   _   _   i   _   a   a   _   i   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(1) spotted 2 enemies :
+		Blue::archer(0)
+		Blue::infantry(2)
+	      Red::archer(1)	attacks	     Blue::archer(0)	dealing	3 damage : [2/8]
+(Red)Phase 1: 
+	Red::infantry(3) moves to 9
+	Red::archer(5) moves to 12
+(Red)Phase 2: 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >           >       >   <   <           <        
+   _   _   a   _   _   i   _   a   a   i   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >           >       >   <   <           <        
+   _   _   a   _   _   i   _   a   a   i   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 8:
+Blue gold=12 health=100                              Red gold=12 health=100
+           >           >       >   <   <           <        
+   _   _   a   _   _   i   _   a   a   i   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+	Blue::archer(0) spotted 2 enemies :
+		Red::archer(1)
+		Red::infantry(3)
+	     Blue::archer(0)	attacks	      Red::archer(1)	dealing	3 damage : [2/8]
+(Blue)Phase 1: 
+	Blue::infantry(2) moves to 6
+	Blue::archer(4) moves to 3
+(Blue)Phase 2: 
+
+Blue move is 
+Blue(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=12 health=100
+   >           >           >   >   <   <           <        
+   a   _   _   a   _   _   i   a   a   i   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(1) spotted 2 enemies :
+		Blue::archer(0)
+		Blue::infantry(2)
+	      Red::archer(1)	attacks	     Blue::archer(0)	dealing	3 damage : [-1/8]
+(Red)Phase 1: 
+	Red::archer(5) moves to 11
+(Red)Phase 2: 
+Blue gold=0 health=100                              Red gold=12 health=100
+   >           >           >   >   <   <       <            
+   a   _   _   a   _   _   i   a   a   i   _   a   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red(0) bought model:archer(price=12)
+Blue::archer(0) was defeated 
+Blue gold=0 health=100                              Red gold=0 health=100
+   >           >           >       <   <       <           <
+   a   _   _   a   _   _   i   _   a   i   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 9:
+Blue gold=4 health=100                              Red gold=4 health=100
+   >           >           >       <   <       <           <
+   a   _   _   a   _   _   i   _   a   i   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+	Blue::infantry(2) moves to 7
+	Blue::archer(4) moves to 4
+	Blue::archer(6) moves to 1
+(Blue)Phase 2: 
+	Blue::infantry(2) spotted 1 enemies :
+		Red::archer(1)
+	   Blue::infantry(2)	attacks	      Red::archer(1)	dealing	4 damage : [-2/8]
+
+Blue move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           >           >   <   <       <           <
+   _   a   _   _   a   _   _   i   a   i   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(1) spotted 1 enemies :
+		Blue::infantry(2)
+	      Red::archer(1)	attacks	   Blue::infantry(2)	dealing	3 damage : [7/10]
+(Red)Phase 1: 
+	Red::archer(5) moves to 10
+	Red::archer(7) moves to 13
+(Red)Phase 2: 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           >           >   <   <   <           <    
+   _   a   _   _   a   _   _   i   a   i   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red::archer(1) was defeated 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           >           >       <   <           <    
+   _   a   _   _   a   _   _   i   _   i   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 10:
+Blue gold=8 health=100                              Red gold=8 health=100
+       >           >           >       <   <           <    
+   _   a   _   _   a   _   _   i   _   i   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+	Blue::infantry(2) moves to 8
+	Blue::archer(4) moves to 5
+	Blue::archer(6) moves to 2
+(Blue)Phase 2: 
+	Blue::infantry(2) spotted 1 enemies :
+		Red::infantry(3)
+	   Blue::infantry(2)	attacks	    Red::infantry(3)	dealing	4 damage : [6/10]
+
+Blue move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >           >           >   <   <           <    
+   _   _   a   _   _   a   _   _   i   i   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::infantry(3) spotted 1 enemies :
+		Blue::infantry(2)
+	    Red::infantry(3)	attacks	   Blue::infantry(2)	dealing	4 damage : [3/10]
+	Red::archer(5) spotted 1 enemies :
+		Blue::infantry(2)
+	      Red::archer(5)	attacks	   Blue::infantry(2)	dealing	3 damage : [0/10]
+(Red)Phase 1: 
+	Red::archer(7) moves to 12
+(Red)Phase 2: 
+	Red::infantry(3) spotted 1 enemies :
+		Blue::infantry(2)
+Blue gold=8 health=100                              Red gold=8 health=100
+           >           >           >   <   <       <        
+   _   _   a   _   _   a   _   _   i   i   a   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue::infantry(2) was defeated 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >           >               <   <       <        
+   _   _   a   _   _   a   _   _   _   i   a   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 11:
+Blue gold=12 health=100                              Red gold=12 health=100
+           >           >               <   <       <        
+   _   _   a   _   _   a   _   _   _   i   a   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+	Blue::archer(4) moves to 6
+	Blue::archer(6) moves to 3
+(Blue)Phase 2: 
+
+Blue move is 
+Blue(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=12 health=100
+   >           >           >           <   <       <        
+   a   _   _   a   _   _   a   _   _   i   a   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::infantry(3) moves to 8
+	Red::archer(5) moves to 9
+	Red::archer(7) moves to 11
+(Red)Phase 2: 
+Blue gold=0 health=100                              Red gold=12 health=100
+   >           >           >       <   <       <            
+   a   _   _   a   _   _   a   _   i   a   _   a   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=0 health=100
+   >           >           >       <   <       <           <
+   a   _   _   a   _   _   a   _   i   a   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 12:
+Blue gold=4 health=100                              Red gold=4 health=100
+   >           >           >       <   <       <           <
+   a   _   _   a   _   _   a   _   i   a   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+	Blue::archer(4) spotted 2 enemies :
+		Red::infantry(3)
+		Red::archer(5)
+	     Blue::archer(4)	attacks	    Red::infantry(3)	dealing	3 damage : [3/10]
+(Blue)Phase 1: 
+	Blue::archer(4) moves to 7
+	Blue::archer(6) moves to 4
+	Blue::archer(8) moves to 1
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           >           >   <   <       <           <
+   _   a   _   _   a   _   _   a   i   a   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::infantry(3) spotted 1 enemies :
+		Blue::archer(4)
+	    Red::infantry(3)	attacks	     Blue::archer(4)	dealing	4 damage : [4/8]
+	Red::archer(5) spotted 1 enemies :
+		Blue::archer(4)
+	      Red::archer(5)	attacks	     Blue::archer(4)	dealing	3 damage : [1/8]
+(Red)Phase 1: 
+	Red::archer(7) moves to 10
+	Red::archer(9) moves to 13
+(Red)Phase 2: 
+	Red::infantry(3) spotted 1 enemies :
+		Blue::archer(4)
+	    Red::infantry(3)	attacks	     Blue::archer(4)	dealing	4 damage : [-3/8]
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           >           >   <   <   <           <    
+   _   a   _   _   a   _   _   a   i   a   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue::archer(4) was defeated 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           >               <   <   <           <    
+   _   a   _   _   a   _   _   _   i   a   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 13:
+Blue gold=8 health=100                              Red gold=8 health=100
+       >           >               <   <   <           <    
+   _   a   _   _   a   _   _   _   i   a   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+	Blue::archer(6) moves to 5
+	Blue::archer(8) moves to 2
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >           >           <   <   <           <    
+   _   _   a   _   _   a   _   _   i   a   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::infantry(3) moves to 7
+	Red::archer(5) moves to 8
+	Red::archer(7) moves to 9
+	Red::archer(9) moves to 12
+(Red)Phase 2: 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >           >       <   <   <           <        
+   _   _   a   _   _   a   _   i   a   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >           >       <   <   <           <        
+   _   _   a   _   _   a   _   i   a   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 14:
+Blue gold=12 health=100                              Red gold=12 health=100
+           >           >       <   <   <           <        
+   _   _   a   _   _   a   _   i   a   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+	Blue::archer(6) spotted 2 enemies :
+		Red::infantry(3)
+		Red::archer(5)
+	     Blue::archer(6)	attacks	    Red::infantry(3)	dealing	3 damage : [0/10]
+(Blue)Phase 1: 
+	Blue::archer(6) moves to 6
+	Blue::archer(8) moves to 3
+(Blue)Phase 2: 
+
+Blue move is 
+Blue(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=12 health=100
+   >           >           >   <   <   <           <        
+   a   _   _   a   _   _   a   i   a   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::infantry(3) spotted 1 enemies :
+		Blue::archer(6)
+	    Red::infantry(3)	attacks	     Blue::archer(6)	dealing	4 damage : [4/8]
+	Red::archer(5) spotted 1 enemies :
+		Blue::archer(6)
+	      Red::archer(5)	attacks	     Blue::archer(6)	dealing	3 damage : [1/8]
+	Red::archer(7) spotted 1 enemies :
+		Blue::archer(6)
+	      Red::archer(7)	attacks	     Blue::archer(6)	dealing	3 damage : [-2/8]
+(Red)Phase 1: 
+	Red::archer(9) moves to 11
+(Red)Phase 2: 
+	Red::infantry(3) spotted 1 enemies :
+		Blue::archer(6)
+Blue gold=0 health=100                              Red gold=12 health=100
+   >           >           >   <   <   <       <            
+   a   _   _   a   _   _   a   i   a   a   _   a   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red(0) bought model:archer(price=12)
+Blue::archer(6) was defeated 
+Red::infantry(3) was defeated 
+Blue gold=0 health=100                              Red gold=0 health=100
+   >           >                   <   <       <           <
+   a   _   _   a   _   _   _   _   a   a   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 15:
+Blue gold=4 health=100                              Red gold=4 health=100
+   >           >                   <   <       <           <
+   a   _   _   a   _   _   _   _   a   a   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+	Blue::archer(8) moves to 4
+	Blue::archer(10) moves to 1
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           >               <   <       <           <
+   _   a   _   _   a   _   _   _   a   a   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(5) moves to 7
+	Red::archer(7) moves to 8
+	Red::archer(9) moves to 10
+	Red::archer(11) moves to 13
+(Red)Phase 2: 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           >           <   <       <           <    
+   _   a   _   _   a   _   _   a   a   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           >           <   <       <           <    
+   _   a   _   _   a   _   _   a   a   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 16:
+Blue gold=8 health=100                              Red gold=8 health=100
+       >           >           <   <       <           <    
+   _   a   _   _   a   _   _   a   a   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+	Blue::archer(8) spotted 1 enemies :
+		Red::archer(5)
+	     Blue::archer(8)	attacks	      Red::archer(5)	dealing	3 damage : [5/8]
+(Blue)Phase 1: 
+	Blue::archer(8) moves to 5
+	Blue::archer(10) moves to 2
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >           >       <   <       <           <    
+   _   _   a   _   _   a   _   a   a   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(5) spotted 1 enemies :
+		Blue::archer(8)
+	      Red::archer(5)	attacks	     Blue::archer(8)	dealing	3 damage : [5/8]
+	Red::archer(7) spotted 1 enemies :
+		Blue::archer(8)
+	      Red::archer(7)	attacks	     Blue::archer(8)	dealing	3 damage : [2/8]
+(Red)Phase 1: 
+	Red::archer(5) moves to 6
+	Red::archer(7) moves to 7
+	Red::archer(9) moves to 9
+	Red::archer(11) moves to 12
+(Red)Phase 2: 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >           >   <   <       <           <        
+   _   _   a   _   _   a   a   a   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >           >   <   <       <           <        
+   _   _   a   _   _   a   a   a   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 17:
+Blue gold=12 health=100                              Red gold=12 health=100
+           >           >   <   <       <           <        
+   _   _   a   _   _   a   a   a   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+	Blue::archer(8) spotted 2 enemies :
+		Red::archer(5)
+		Red::archer(7)
+	     Blue::archer(8)	attacks	      Red::archer(5)	dealing	3 damage : [2/8]
+(Blue)Phase 1: 
+	Blue::archer(10) moves to 3
+(Blue)Phase 2: 
+
+Blue move is 
+Blue(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=12 health=100
+   >           >       >   <   <       <           <        
+   a   _   _   a   _   a   a   a   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(5) spotted 2 enemies :
+		Blue::archer(8)
+		Blue::archer(10)
+	      Red::archer(5)	attacks	     Blue::archer(8)	dealing	3 damage : [-1/8]
+	Red::archer(7) spotted 1 enemies :
+		Blue::archer(8)
+(Red)Phase 1: 
+	Red::archer(9) moves to 8
+	Red::archer(11) moves to 11
+(Red)Phase 2: 
+Blue gold=0 health=100                              Red gold=12 health=100
+   >           >       >   <   <   <           <            
+   a   _   _   a   _   a   a   a   a   _   _   a   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red(0) bought model:archer(price=12)
+Blue::archer(8) was defeated 
+Blue gold=0 health=100                              Red gold=0 health=100
+   >           >           <   <   <           <           <
+   a   _   _   a   _   _   a   a   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 18:
+Blue gold=4 health=100                              Red gold=4 health=100
+   >           >           <   <   <           <           <
+   a   _   _   a   _   _   a   a   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+	Blue::archer(10) spotted 1 enemies :
+		Red::archer(5)
+	    Blue::archer(10)	attacks	      Red::archer(5)	dealing	3 damage : [-1/8]
+(Blue)Phase 1: 
+	Blue::archer(10) moves to 4
+	Blue::archer(12) moves to 1
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           >       <   <   <           <           <
+   _   a   _   _   a   _   a   a   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(5) spotted 1 enemies :
+		Blue::archer(10)
+	      Red::archer(5)	attacks	    Blue::archer(10)	dealing	3 damage : [5/8]
+	Red::archer(7) spotted 1 enemies :
+		Blue::archer(10)
+	      Red::archer(7)	attacks	    Blue::archer(10)	dealing	3 damage : [2/8]
+(Red)Phase 1: 
+	Red::archer(5) moves to 5
+	Red::archer(7) moves to 6
+	Red::archer(9) moves to 7
+	Red::archer(11) moves to 10
+	Red::archer(13) moves to 13
+(Red)Phase 2: 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           >   <   <   <           <           <    
+   _   a   _   _   a   a   a   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red::archer(5) was defeated 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           >       <   <           <           <    
+   _   a   _   _   a   _   a   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 19:
+Blue gold=8 health=100                              Red gold=8 health=100
+       >           >       <   <           <           <    
+   _   a   _   _   a   _   a   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+	Blue::archer(10) spotted 2 enemies :
+		Red::archer(7)
+		Red::archer(9)
+	    Blue::archer(10)	attacks	      Red::archer(7)	dealing	3 damage : [5/8]
+(Blue)Phase 1: 
+	Blue::archer(10) moves to 5
+	Blue::archer(12) moves to 2
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >           >   <   <           <           <    
+   _   _   a   _   _   a   a   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(7) spotted 1 enemies :
+		Blue::archer(10)
+	      Red::archer(7)	attacks	    Blue::archer(10)	dealing	3 damage : [-1/8]
+	Red::archer(9) spotted 1 enemies :
+		Blue::archer(10)
+(Red)Phase 1: 
+	Red::archer(11) moves to 9
+	Red::archer(13) moves to 12
+(Red)Phase 2: 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >           >   <   <       <           <        
+   _   _   a   _   _   a   a   a   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue::archer(10) was defeated 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >               <   <       <           <        
+   _   _   a   _   _   _   a   a   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 20:
+Blue gold=12 health=100                              Red gold=12 health=100
+           >               <   <       <           <        
+   _   _   a   _   _   _   a   a   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+	Blue::archer(12) moves to 3
+(Blue)Phase 2: 
+
+Blue move is 
+Blue(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=12 health=100
+   >           >           <   <       <           <        
+   a   _   _   a   _   _   a   a   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(7) spotted 1 enemies :
+		Blue::archer(12)
+	      Red::archer(7)	attacks	    Blue::archer(12)	dealing	3 damage : [5/8]
+(Red)Phase 1: 
+	Red::archer(7) moves to 5
+	Red::archer(9) moves to 6
+	Red::archer(11) moves to 8
+	Red::archer(13) moves to 11
+(Red)Phase 2: 
+Blue gold=0 health=100                              Red gold=12 health=100
+   >           >       <   <       <           <            
+   a   _   _   a   _   a   a   _   a   _   _   a   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=0 health=100
+   >           >       <   <       <           <           <
+   a   _   _   a   _   a   a   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 21:
+Blue gold=4 health=100                              Red gold=4 health=100
+   >           >       <   <       <           <           <
+   a   _   _   a   _   a   a   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+	Blue::archer(12) spotted 2 enemies :
+		Red::archer(7)
+		Red::archer(9)
+	    Blue::archer(12)	attacks	      Red::archer(7)	dealing	3 damage : [2/8]
+(Blue)Phase 1: 
+	Blue::archer(12) moves to 4
+	Blue::archer(14) moves to 1
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           >   <   <       <           <           <
+   _   a   _   _   a   a   a   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(7) spotted 1 enemies :
+		Blue::archer(12)
+	      Red::archer(7)	attacks	    Blue::archer(12)	dealing	3 damage : [2/8]
+	Red::archer(9) spotted 1 enemies :
+		Blue::archer(12)
+	      Red::archer(9)	attacks	    Blue::archer(12)	dealing	3 damage : [-1/8]
+(Red)Phase 1: 
+	Red::archer(11) moves to 7
+	Red::archer(13) moves to 10
+	Red::archer(15) moves to 13
+(Red)Phase 2: 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           >   <   <   <           <           <    
+   _   a   _   _   a   a   a   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue::archer(12) was defeated 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >               <   <   <           <           <    
+   _   a   _   _   _   a   a   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 22:
+Blue gold=8 health=100                              Red gold=8 health=100
+       >               <   <   <           <           <    
+   _   a   _   _   _   a   a   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+	Blue::archer(14) moves to 2
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >           <   <   <           <           <    
+   _   _   a   _   _   a   a   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(7) spotted 1 enemies :
+		Blue::archer(14)
+	      Red::archer(7)	attacks	    Blue::archer(14)	dealing	3 damage : [5/8]
+(Red)Phase 1: 
+	Red::archer(7) moves to 4
+	Red::archer(9) moves to 5
+	Red::archer(11) moves to 6
+	Red::archer(13) moves to 9
+	Red::archer(15) moves to 12
+(Red)Phase 2: 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >       <   <   <           <           <        
+   _   _   a   _   a   a   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >       <   <   <           <           <        
+   _   _   a   _   a   a   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 23:
+Blue gold=12 health=100                              Red gold=12 health=100
+           >       <   <   <           <           <        
+   _   _   a   _   a   a   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+	Blue::archer(14) spotted 2 enemies :
+		Red::archer(7)
+		Red::archer(9)
+	    Blue::archer(14)	attacks	      Red::archer(7)	dealing	3 damage : [-1/8]
+(Blue)Phase 1: 
+	Blue::archer(14) moves to 3
+(Blue)Phase 2: 
+
+Blue move is 
+Blue(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=12 health=100
+   >           >   <   <   <           <           <        
+   a   _   _   a   a   a   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(7) spotted 1 enemies :
+		Blue::archer(14)
+	      Red::archer(7)	attacks	    Blue::archer(14)	dealing	3 damage : [2/8]
+	Red::archer(9) spotted 1 enemies :
+		Blue::archer(14)
+	      Red::archer(9)	attacks	    Blue::archer(14)	dealing	3 damage : [-1/8]
+	Red::archer(11) spotted 1 enemies :
+		Blue::archer(14)
+(Red)Phase 1: 
+	Red::archer(13) moves to 8
+	Red::archer(15) moves to 11
+(Red)Phase 2: 
+Blue gold=0 health=100                              Red gold=12 health=100
+   >           >   <   <   <       <           <            
+   a   _   _   a   a   a   a   _   a   _   _   a   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red(0) bought model:archer(price=12)
+Blue::archer(14) was defeated 
+Red::archer(7) was defeated 
+Blue gold=0 health=100                              Red gold=0 health=100
+   >                   <   <       <           <           <
+   a   _   _   _   _   a   a   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 24:
+Blue gold=4 health=100                              Red gold=4 health=100
+   >                   <   <       <           <           <
+   a   _   _   _   _   a   a   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+	Blue::archer(16) moves to 1
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >               <   <       <           <           <
+   _   a   _   _   _   a   a   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(9) moves to 4
+	Red::archer(11) moves to 5
+	Red::archer(13) moves to 7
+	Red::archer(15) moves to 10
+	Red::archer(17) moves to 13
+(Red)Phase 2: 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           <   <       <           <           <    
+   _   a   _   _   a   a   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >           <   <       <           <           <    
+   _   a   _   _   a   a   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 25:
+Blue gold=8 health=100                              Red gold=8 health=100
+       >           <   <       <           <           <    
+   _   a   _   _   a   a   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+	Blue::archer(16) spotted 1 enemies :
+		Red::archer(9)
+	    Blue::archer(16)	attacks	      Red::archer(9)	dealing	3 damage : [5/8]
+(Blue)Phase 1: 
+	Blue::archer(16) moves to 2
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >       <   <       <           <           <    
+   _   _   a   _   a   a   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(9) spotted 1 enemies :
+		Blue::archer(16)
+	      Red::archer(9)	attacks	    Blue::archer(16)	dealing	3 damage : [5/8]
+	Red::archer(11) spotted 1 enemies :
+		Blue::archer(16)
+	     Red::archer(11)	attacks	    Blue::archer(16)	dealing	3 damage : [2/8]
+(Red)Phase 1: 
+	Red::archer(9) moves to 3
+	Red::archer(11) moves to 4
+	Red::archer(13) moves to 6
+	Red::archer(15) moves to 9
+	Red::archer(17) moves to 12
+(Red)Phase 2: 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >   <   <       <           <           <        
+   _   _   a   a   a   _   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >   <   <       <           <           <        
+   _   _   a   a   a   _   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 26:
+Blue gold=12 health=100                              Red gold=12 health=100
+           >   <   <       <           <           <        
+   _   _   a   a   a   _   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+	Blue::archer(16) spotted 2 enemies :
+		Red::archer(9)
+		Red::archer(11)
+	    Blue::archer(16)	attacks	      Red::archer(9)	dealing	3 damage : [2/8]
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=12 health=100
+   >       >   <   <       <           <           <        
+   a   _   a   a   a   _   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(9) spotted 2 enemies :
+		Blue::archer(16)
+		Blue::archer(18)
+	      Red::archer(9)	attacks	    Blue::archer(16)	dealing	3 damage : [-1/8]
+	Red::archer(11) spotted 1 enemies :
+		Blue::archer(16)
+(Red)Phase 1: 
+	Red::archer(13) moves to 5
+	Red::archer(15) moves to 8
+	Red::archer(17) moves to 11
+(Red)Phase 2: 
+Blue gold=0 health=100                              Red gold=12 health=100
+   >       >   <   <   <           <           <            
+   a   _   a   a   a   a   _   _   a   _   _   a   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red(0) bought model:archer(price=12)
+Blue::archer(16) was defeated 
+Blue gold=0 health=100                              Red gold=0 health=100
+   >           <   <   <           <           <           <
+   a   _   _   a   a   a   _   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 27:
+Blue gold=4 health=100                              Red gold=4 health=100
+   >           <   <   <           <           <           <
+   a   _   _   a   a   a   _   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+	Blue::archer(18) spotted 1 enemies :
+		Red::archer(9)
+	    Blue::archer(18)	attacks	      Red::archer(9)	dealing	3 damage : [-1/8]
+(Blue)Phase 1: 
+	Blue::archer(18) moves to 1
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >       <   <   <           <           <           <
+   _   a   _   a   a   a   _   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(9) spotted 1 enemies :
+		Blue::archer(18)
+	      Red::archer(9)	attacks	    Blue::archer(18)	dealing	3 damage : [5/8]
+	Red::archer(11) spotted 1 enemies :
+		Blue::archer(18)
+	     Red::archer(11)	attacks	    Blue::archer(18)	dealing	3 damage : [2/8]
+(Red)Phase 1: 
+	Red::archer(9) moves to 2
+	Red::archer(11) moves to 3
+	Red::archer(13) moves to 4
+	Red::archer(15) moves to 7
+	Red::archer(17) moves to 10
+	Red::archer(19) moves to 13
+(Red)Phase 2: 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >   <   <   <           <           <           <    
+   _   a   a   a   a   _   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red::archer(9) was defeated 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >       <   <           <           <           <    
+   _   a   _   a   a   _   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 28:
+Blue gold=8 health=100                              Red gold=8 health=100
+       >       <   <           <           <           <    
+   _   a   _   a   a   _   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+	Blue::archer(18) spotted 2 enemies :
+		Red::archer(11)
+		Red::archer(13)
+	    Blue::archer(18)	attacks	     Red::archer(11)	dealing	3 damage : [5/8]
+(Blue)Phase 1: 
+	Blue::archer(18) moves to 2
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >   <   <           <           <           <    
+   _   _   a   a   a   _   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(11) spotted 1 enemies :
+		Blue::archer(18)
+	     Red::archer(11)	attacks	    Blue::archer(18)	dealing	3 damage : [-1/8]
+	Red::archer(13) spotted 1 enemies :
+		Blue::archer(18)
+(Red)Phase 1: 
+	Red::archer(15) moves to 6
+	Red::archer(17) moves to 9
+	Red::archer(19) moves to 12
+(Red)Phase 2: 
+Blue gold=8 health=100                              Red gold=8 health=100
+           >   <   <       <           <           <        
+   _   _   a   a   a   _   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue::archer(18) was defeated 
+Blue gold=8 health=100                              Red gold=8 health=100
+               <   <       <           <           <        
+   _   _   _   a   a   _   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 29:
+Blue gold=12 health=100                              Red gold=12 health=100
+               <   <       <           <           <        
+   _   _   _   a   a   _   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=12 health=100
+   >           <   <       <           <           <        
+   a   _   _   a   a   _   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(11) spotted 1 enemies :
+		Blue::archer(20)
+	     Red::archer(11)	attacks	    Blue::archer(20)	dealing	3 damage : [5/8]
+(Red)Phase 1: 
+	Red::archer(11) moves to 2
+	Red::archer(13) moves to 3
+	Red::archer(15) moves to 5
+	Red::archer(17) moves to 8
+	Red::archer(19) moves to 11
+(Red)Phase 2: 
+Blue gold=0 health=100                              Red gold=12 health=100
+   >       <   <       <           <           <            
+   a   _   a   a   _   a   _   _   a   _   _   a   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=0 health=100
+   >       <   <       <           <           <           <
+   a   _   a   a   _   a   _   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 30:
+Blue gold=4 health=100                              Red gold=4 health=100
+   >       <   <       <           <           <           <
+   a   _   a   a   _   a   _   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+	Blue::archer(20) spotted 2 enemies :
+		Red::archer(11)
+		Red::archer(13)
+	    Blue::archer(20)	attacks	     Red::archer(11)	dealing	3 damage : [2/8]
+(Blue)Phase 1: 
+	Blue::archer(20) moves to 1
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >   <   <       <           <           <           <
+   _   a   a   a   _   a   _   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(11) spotted 1 enemies :
+		Blue::archer(20)
+	     Red::archer(11)	attacks	    Blue::archer(20)	dealing	3 damage : [2/8]
+	Red::archer(13) spotted 1 enemies :
+		Blue::archer(20)
+	     Red::archer(13)	attacks	    Blue::archer(20)	dealing	3 damage : [-1/8]
+(Red)Phase 1: 
+	Red::archer(15) moves to 4
+	Red::archer(17) moves to 7
+	Red::archer(19) moves to 10
+	Red::archer(21) moves to 13
+(Red)Phase 2: 
+Blue gold=4 health=100                              Red gold=4 health=100
+       >   <   <   <           <           <           <    
+   _   a   a   a   a   _   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue::archer(20) was defeated 
+Blue gold=4 health=100                              Red gold=4 health=100
+           <   <   <           <           <           <    
+   _   _   a   a   a   _   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 31:
+Blue gold=8 health=100                              Red gold=8 health=100
+           <   <   <           <           <           <    
+   _   _   a   a   a   _   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+           <   <   <           <           <           <    
+   _   _   a   a   a   _   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(11) moves to 1
+	Red::archer(13) moves to 2
+	Red::archer(15) moves to 3
+	Red::archer(17) moves to 6
+	Red::archer(19) moves to 9
+	Red::archer(21) moves to 12
+(Red)Phase 2: 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <           <           <           <        
+   _   a   a   a   _   _   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <           <           <           <        
+   _   a   a   a   _   _   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 32:
+Blue gold=12 health=100                              Red gold=12 health=100
+       <   <   <           <           <           <        
+   _   a   a   a   _   _   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=12 health=100
+   >   <   <   <           <           <           <        
+   a   a   a   a   _   _   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(11) spotted 1 enemies :
+		Blue::archer(22)
+	     Red::archer(11)	attacks	    Blue::archer(22)	dealing	3 damage : [5/8]
+	Red::archer(13) spotted 1 enemies :
+		Blue::archer(22)
+	     Red::archer(13)	attacks	    Blue::archer(22)	dealing	3 damage : [2/8]
+	Red::archer(15) spotted 1 enemies :
+		Blue::archer(22)
+	     Red::archer(15)	attacks	    Blue::archer(22)	dealing	3 damage : [-1/8]
+(Red)Phase 1: 
+	Red::archer(17) moves to 5
+	Red::archer(19) moves to 8
+	Red::archer(21) moves to 11
+(Red)Phase 2: 
+Blue gold=0 health=100                              Red gold=12 health=100
+   >   <   <   <       <           <           <            
+   a   a   a   a   _   a   _   _   a   _   _   a   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red(0) bought model:archer(price=12)
+Blue::archer(22) was defeated 
+Blue gold=0 health=100                              Red gold=0 health=100
+       <   <   <       <           <           <           <
+   _   a   a   a   _   a   _   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 33:
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <       <           <           <           <
+   _   a   a   a   _   a   _   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <       <           <           <           <
+   _   a   a   a   _   a   _   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(17) moves to 4
+	Red::archer(19) moves to 7
+	Red::archer(21) moves to 10
+	Red::archer(23) moves to 13
+(Red)Phase 2: 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <           <           <           <    
+   _   a   a   a   a   _   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <           <           <           <    
+   _   a   a   a   a   _   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 34:
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <           <           <           <    
+   _   a   a   a   a   _   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <           <           <           <    
+   _   a   a   a   a   _   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(19) moves to 6
+	Red::archer(21) moves to 9
+	Red::archer(23) moves to 12
+(Red)Phase 2: 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <       <           <           <        
+   _   a   a   a   a   _   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <       <           <           <        
+   _   a   a   a   a   _   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 35:
+Blue gold=12 health=100                              Red gold=12 health=100
+       <   <   <   <       <           <           <        
+   _   a   a   a   a   _   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=12 health=100
+   >   <   <   <   <       <           <           <        
+   a   a   a   a   a   _   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(11) spotted 1 enemies :
+		Blue::archer(24)
+	     Red::archer(11)	attacks	    Blue::archer(24)	dealing	3 damage : [5/8]
+	Red::archer(13) spotted 1 enemies :
+		Blue::archer(24)
+	     Red::archer(13)	attacks	    Blue::archer(24)	dealing	3 damage : [2/8]
+	Red::archer(15) spotted 1 enemies :
+		Blue::archer(24)
+	     Red::archer(15)	attacks	    Blue::archer(24)	dealing	3 damage : [-1/8]
+(Red)Phase 1: 
+	Red::archer(19) moves to 5
+	Red::archer(21) moves to 8
+	Red::archer(23) moves to 11
+(Red)Phase 2: 
+Blue gold=0 health=100                              Red gold=12 health=100
+   >   <   <   <   <   <           <           <            
+   a   a   a   a   a   a   _   _   a   _   _   a   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red(0) bought model:archer(price=12)
+Blue::archer(24) was defeated 
+Blue gold=0 health=100                              Red gold=0 health=100
+       <   <   <   <   <           <           <           <
+   _   a   a   a   a   a   _   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 36:
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <           <           <           <
+   _   a   a   a   a   a   _   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <           <           <           <
+   _   a   a   a   a   a   _   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(21) moves to 7
+	Red::archer(23) moves to 10
+	Red::archer(25) moves to 13
+(Red)Phase 2: 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <       <           <           <    
+   _   a   a   a   a   a   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <       <           <           <    
+   _   a   a   a   a   a   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 37:
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <       <           <           <    
+   _   a   a   a   a   a   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <       <           <           <    
+   _   a   a   a   a   a   _   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(21) moves to 6
+	Red::archer(23) moves to 9
+	Red::archer(25) moves to 12
+(Red)Phase 2: 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <           <           <        
+   _   a   a   a   a   a   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <           <           <        
+   _   a   a   a   a   a   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 38:
+Blue gold=12 health=100                              Red gold=12 health=100
+       <   <   <   <   <   <           <           <        
+   _   a   a   a   a   a   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=12 health=100
+   >   <   <   <   <   <   <           <           <        
+   a   a   a   a   a   a   a   _   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(11) spotted 1 enemies :
+		Blue::archer(26)
+	     Red::archer(11)	attacks	    Blue::archer(26)	dealing	3 damage : [5/8]
+	Red::archer(13) spotted 1 enemies :
+		Blue::archer(26)
+	     Red::archer(13)	attacks	    Blue::archer(26)	dealing	3 damage : [2/8]
+	Red::archer(15) spotted 1 enemies :
+		Blue::archer(26)
+	     Red::archer(15)	attacks	    Blue::archer(26)	dealing	3 damage : [-1/8]
+(Red)Phase 1: 
+	Red::archer(23) moves to 8
+	Red::archer(25) moves to 11
+(Red)Phase 2: 
+Blue gold=0 health=100                              Red gold=12 health=100
+   >   <   <   <   <   <   <       <           <            
+   a   a   a   a   a   a   a   _   a   _   _   a   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red(0) bought model:archer(price=12)
+Blue::archer(26) was defeated 
+Blue gold=0 health=100                              Red gold=0 health=100
+       <   <   <   <   <   <       <           <           <
+   _   a   a   a   a   a   a   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 39:
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <   <       <           <           <
+   _   a   a   a   a   a   a   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <   <       <           <           <
+   _   a   a   a   a   a   a   _   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(23) moves to 7
+	Red::archer(25) moves to 10
+	Red::archer(27) moves to 13
+(Red)Phase 2: 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <   <   <           <           <    
+   _   a   a   a   a   a   a   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <   <   <           <           <    
+   _   a   a   a   a   a   a   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 40:
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <   <           <           <    
+   _   a   a   a   a   a   a   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <   <           <           <    
+   _   a   a   a   a   a   a   a   _   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(25) moves to 9
+	Red::archer(27) moves to 12
+(Red)Phase 2: 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <   <       <           <        
+   _   a   a   a   a   a   a   a   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <   <       <           <        
+   _   a   a   a   a   a   a   a   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 41:
+Blue gold=12 health=100                              Red gold=12 health=100
+       <   <   <   <   <   <   <       <           <        
+   _   a   a   a   a   a   a   a   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=12 health=100
+   >   <   <   <   <   <   <   <       <           <        
+   a   a   a   a   a   a   a   a   _   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(11) spotted 1 enemies :
+		Blue::archer(28)
+	     Red::archer(11)	attacks	    Blue::archer(28)	dealing	3 damage : [5/8]
+	Red::archer(13) spotted 1 enemies :
+		Blue::archer(28)
+	     Red::archer(13)	attacks	    Blue::archer(28)	dealing	3 damage : [2/8]
+	Red::archer(15) spotted 1 enemies :
+		Blue::archer(28)
+	     Red::archer(15)	attacks	    Blue::archer(28)	dealing	3 damage : [-1/8]
+(Red)Phase 1: 
+	Red::archer(25) moves to 8
+	Red::archer(27) moves to 11
+(Red)Phase 2: 
+Blue gold=0 health=100                              Red gold=12 health=100
+   >   <   <   <   <   <   <   <   <           <            
+   a   a   a   a   a   a   a   a   a   _   _   a   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red(0) bought model:archer(price=12)
+Blue::archer(28) was defeated 
+Blue gold=0 health=100                              Red gold=0 health=100
+       <   <   <   <   <   <   <   <           <           <
+   _   a   a   a   a   a   a   a   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 42:
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <   <   <   <           <           <
+   _   a   a   a   a   a   a   a   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <   <   <   <           <           <
+   _   a   a   a   a   a   a   a   a   _   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(27) moves to 10
+	Red::archer(29) moves to 13
+(Red)Phase 2: 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <   <   <   <       <           <    
+   _   a   a   a   a   a   a   a   a   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <   <   <   <       <           <    
+   _   a   a   a   a   a   a   a   a   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 43:
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <   <   <       <           <    
+   _   a   a   a   a   a   a   a   a   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <   <   <       <           <    
+   _   a   a   a   a   a   a   a   a   _   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(27) moves to 9
+	Red::archer(29) moves to 12
+(Red)Phase 2: 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <   <   <   <           <        
+   _   a   a   a   a   a   a   a   a   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <   <   <   <           <        
+   _   a   a   a   a   a   a   a   a   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 44:
+Blue gold=12 health=100                              Red gold=12 health=100
+       <   <   <   <   <   <   <   <   <           <        
+   _   a   a   a   a   a   a   a   a   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=12 health=100
+   >   <   <   <   <   <   <   <   <   <           <        
+   a   a   a   a   a   a   a   a   a   a   _   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(11) spotted 1 enemies :
+		Blue::archer(30)
+	     Red::archer(11)	attacks	    Blue::archer(30)	dealing	3 damage : [5/8]
+	Red::archer(13) spotted 1 enemies :
+		Blue::archer(30)
+	     Red::archer(13)	attacks	    Blue::archer(30)	dealing	3 damage : [2/8]
+	Red::archer(15) spotted 1 enemies :
+		Blue::archer(30)
+	     Red::archer(15)	attacks	    Blue::archer(30)	dealing	3 damage : [-1/8]
+(Red)Phase 1: 
+	Red::archer(29) moves to 11
+(Red)Phase 2: 
+Blue gold=0 health=100                              Red gold=12 health=100
+   >   <   <   <   <   <   <   <   <   <       <            
+   a   a   a   a   a   a   a   a   a   a   _   a   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red(0) bought model:archer(price=12)
+Blue::archer(30) was defeated 
+Blue gold=0 health=100                              Red gold=0 health=100
+       <   <   <   <   <   <   <   <   <       <           <
+   _   a   a   a   a   a   a   a   a   a   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 45:
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <   <   <   <   <       <           <
+   _   a   a   a   a   a   a   a   a   a   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <   <   <   <   <       <           <
+   _   a   a   a   a   a   a   a   a   a   _   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(29) moves to 10
+	Red::archer(31) moves to 13
+(Red)Phase 2: 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <   <   <   <   <   <           <    
+   _   a   a   a   a   a   a   a   a   a   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <   <   <   <   <   <           <    
+   _   a   a   a   a   a   a   a   a   a   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 46:
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <   <   <   <   <           <    
+   _   a   a   a   a   a   a   a   a   a   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <   <   <   <   <           <    
+   _   a   a   a   a   a   a   a   a   a   a   _   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(31) moves to 12
+(Red)Phase 2: 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <   <   <   <   <       <        
+   _   a   a   a   a   a   a   a   a   a   a   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <   <   <   <   <       <        
+   _   a   a   a   a   a   a   a   a   a   a   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 47:
+Blue gold=12 health=100                              Red gold=12 health=100
+       <   <   <   <   <   <   <   <   <   <       <        
+   _   a   a   a   a   a   a   a   a   a   a   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue(0) bought model:archer(price=12)
+Blue gold=0 health=100                              Red gold=12 health=100
+   >   <   <   <   <   <   <   <   <   <   <       <        
+   a   a   a   a   a   a   a   a   a   a   a   _   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+	Red::archer(11) spotted 1 enemies :
+		Blue::archer(32)
+	     Red::archer(11)	attacks	    Blue::archer(32)	dealing	3 damage : [5/8]
+	Red::archer(13) spotted 1 enemies :
+		Blue::archer(32)
+	     Red::archer(13)	attacks	    Blue::archer(32)	dealing	3 damage : [2/8]
+	Red::archer(15) spotted 1 enemies :
+		Blue::archer(32)
+	     Red::archer(15)	attacks	    Blue::archer(32)	dealing	3 damage : [-1/8]
+(Red)Phase 1: 
+	Red::archer(31) moves to 11
+(Red)Phase 2: 
+Blue gold=0 health=100                              Red gold=12 health=100
+   >   <   <   <   <   <   <   <   <   <   <   <            
+   a   a   a   a   a   a   a   a   a   a   a   a   _   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Red(0) bought model:archer(price=12)
+Blue::archer(32) was defeated 
+Blue gold=0 health=100                              Red gold=0 health=100
+       <   <   <   <   <   <   <   <   <   <   <           <
+   _   a   a   a   a   a   a   a   a   a   a   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 48:
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <   <   <   <   <   <   <           <
+   _   a   a   a   a   a   a   a   a   a   a   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <   <   <   <   <   <   <           <
+   _   a   a   a   a   a   a   a   a   a   a   a   _   _   a
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(33) moves to 13
+(Red)Phase 2: 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <   <   <   <   <   <   <       <    
+   _   a   a   a   a   a   a   a   a   a   a   a   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=4 health=100                              Red gold=4 health=100
+       <   <   <   <   <   <   <   <   <   <   <       <    
+   _   a   a   a   a   a   a   a   a   a   a   a   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
+{Turn 49:
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <   <   <   <   <   <       <    
+   _   a   a   a   a   a   a   a   a   a   a   a   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Blue)Phase 0: 
+(Blue)Phase 1: 
+(Blue)Phase 2: 
+
+Blue move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <   <   <   <   <   <       <    
+   _   a   a   a   a   a   a   a   a   a   a   a   _   a   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+(Red)Phase 0: 
+(Red)Phase 1: 
+	Red::archer(33) moves to 12
+(Red)Phase 2: 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <   <   <   <   <   <   <        
+   _   a   a   a   a   a   a   a   a   a   a   a   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+
+Red move is 
+Blue gold=8 health=100                              Red gold=8 health=100
+       <   <   <   <   <   <   <   <   <   <   <   <        
+   _   a   a   a   a   a   a   a   a   a   a   a   a   _   _
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+}
