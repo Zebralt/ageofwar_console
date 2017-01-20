@@ -79,6 +79,8 @@
         Player& getRed();
 
         Player& getWinner();
+        
+        unit_ptr getUnitAt(int);
 
         bool loadConfig();
 
@@ -102,6 +104,10 @@
         void checkUnits();
         bool addUnit(std::shared_ptr<Unit>, Player&);
 
+		bool VERBOSE = 0;
+		void setVerbose(bool);
+		
+		void killUnit(unit_ptr);
     };
 
     bool operator==(Player& p, Player& q);

@@ -16,6 +16,9 @@
         int health;
         int pos = -1;
         int remainingActions = model.nbActions;
+        int id;
+        
+        static int instanceCount;
 
     public:
         Unit(Player&,Model&);
@@ -27,7 +30,7 @@
 
         bool attackEnemyCastle(Game&);
         bool checkForEnemyCastle(Game&); /* est-on a portee de la base ennemie ? */
-        std::vector<std::shared_ptr<Unit>> checkLineOfSight(std::vector<std::shared_ptr<Unit>>,int from, int ennemyCursor, int direction);
+        std::vector<std::shared_ptr<Unit>> checkLineOfSight(Game&);
         bool attack(Unit&);
         bool advance(Game&); // mobile
         int engage(Game&);
@@ -45,11 +48,15 @@
         int getPosition() { return pos; }
         std::string getName() { return model.getName(); }
 
-        Player& getOwner();
+        Player& getOwner() { return owner; }
 
         std::string toString();
+        std::string healthRatio() 
+        { return "[" + std::to_string(health) + "/" + std::to_string(model.maxHP) + "]"; }
 
         friend std::ostream& operator<<(std::ostream&, const Unit&);
+        
+        void replenish();
     };
 
     std::ostream& operator<<(std::ostream& o, const Unit& u);

@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <algorithm>
 
 #define stringList std::vector<std::string>
 #define print std::cout <<
@@ -16,11 +17,13 @@
 
 typedef unsigned int uint;
 
-bool VERBOSE = 1;
-
     bool operator==(Player& p, Player& q) {
         return p.getName() == q.getName();
     }
+    
+    void Game::setVerbose(bool b) {
+		VERBOSE = b;
+	}
 
     Game::Game(Player& b, Player& r) : red(r), blue(b)
     {
@@ -51,13 +54,22 @@ bool VERBOSE = 1;
 		return nullptr;
     }*/
      bool Game::positionTaken(int pos) {
-        std::vector<std::shared_ptr<Unit>> units = getUnits();
+        std::vector<unit_ptr> units = getUnits();
 		for (unsigned int i=0;i<units.size();i++) {
             if (units[i]->getPosition() == pos)
                 return true;
 		}
 		return false;
     }
+    
+    unit_ptr Game::getUnitAt(int pos) {
+		std::vector<unit_ptr> units = getUnits();
+		for (unsigned int i=0;i<units.size();i++) {
+            if (units[i]->getPosition() == pos)
+                return units[i];
+		}
+		return nullptr;
+	}
 
     Player& Game::getBlue() {
         return blue;
@@ -75,8 +87,6 @@ bool VERBOSE = 1;
         std::vector<std::shared_ptr<Unit>> units;
         units.insert(std::end(units), std::begin(blueUnits), std::end(blueUnits));
         units.insert(std::end(units), std::begin(redUnits), std::end(redUnits));
-//        for (int i=0;i<blueUnits.size();i++) units.push_back(blueUnits[i]);
-//        for (int i=0;i<redUnits.size();i++) units.push_back(redUnits[i]);
         return units;
     }
 
@@ -115,7 +125,7 @@ bool VERBOSE = 1;
         //int direction = getDirection(currentPlayer);
         std::vector<std::shared_ptr<Unit>>& units = getUnits(currentPlayer);
         for (int phase=0;phase < nbPhases; phase++) {
-            say std::cout << "Phase " << phase << ":" << std::endl;
+            say std::cout <<"(" << currentPlayer.toString() << ")" << "Phase " << phase << ": " << std::endl;
             for (std::vector<std::shared_ptr<Unit>>::const_iterator it = units.begin(); it != units.end(); ++it) { /* reste a ajouter la gestion dans l'autre sens */
 
                 std::shared_ptr<Unit> unit = *it;
@@ -127,19 +137,19 @@ bool VERBOSE = 1;
                             case ATTACK:
                                 if (unit->engage(*this)) {
                                     unit->act();
-                                    say std::cout << unit->getName() << " succeeded in attacking" << std::endl;
+                                    //say std::cout << '\t' << unit->toString() << " engaged " << "(" << unit->haveRemainingActions() << " action" << (unit->haveRemainingActions() > 1?"s":"") <<  " left)" << std::endl;
                                 }
                                 else {
-                                    say std::cout << unit->getName() << " couldn't attack" << std::endl;
+                                    //say std::cout << '\t' << unit->toString() << " couldn't attack" << std::endl;
                                 }
                             break;
                             case MOVE:
                                 if (unit->advance(*this)) {
                                     unit->act();
-                                    say std::cout << unit->getName() << "succeeded in moving" << std::endl;
+                                    //say std::cout << '\t' << unit->toString() << " moved " << "(" << unit->haveRemainingActions() << " action" << (unit->haveRemainingActions() > 1?"s":"") <<  " left)" << std::endl;
                                 }
                                 else {
-                                    say std::cout << unit->getName() <<  " couldn't move" << std::endl;
+                                    //say std::cout << '\t' << unit->toString() <<  " couldn't move" << std::endl;
                                 }
                             break;
                             case IDLE:
@@ -155,26 +165,31 @@ bool VERBOSE = 1;
     }
 
     void Game::display() {
-        std::cout << "Turn " << currentTurn << ':';
-        std::cout << "\t";
-        //for (int i=0;i<12;i++) std::cout << i+1 << " ";
-        std::cout << std::endl << '\t';
-        std::cout << blue;
+        std::cout << "Turn " << currentTurn << ':' << std::endl;
+        //std::cout << blue;
         for (int i=0;i<battlefieldLength;i++)
         {
-            if (0/*std::shared_ptr<Unit> un = positionTaken(i)*/) std::cout << " a ";// std::cout << un->getName();
+            if (positionTaken(i)) std::cout << " " << getUnitAt(i)->getName()[0] << " ";
             else std::cout << " _ ";
         }
-        std::cout << red;
+        //std::cout << red;
         std::cout << std::endl;
+        //std::cout << "       ";
+        for (int i=0;i<battlefieldLength;i++) {
+			std::cout << " " << i << " ";
+		}
+		std::cout << std::endl;
     }
 
     void Game::unravel() {
         red.give(goldPerTurn);
         blue.give(goldPerTurn);
+        display();
         runPhases(blue);
+        if (VERBOSE) std::cout << std::endl << blue.toString() << " move is " << std::endl;
         blue.play(*this);
         runPhases(red);
+        if (VERBOSE)  std::cout << std::endl << red.toString() << " move is " << std::endl;
         red.play(*this);
         checkUnits();
         //updateCursors();
@@ -203,6 +218,7 @@ bool VERBOSE = 1;
             std::shared_ptr<Unit> u(new Unit(p,m));
             if (addUnit(u,p)) {
                 p.debit(m.getPrice());
+                say std::cout << p << " bought model:" << m.getName() << "(price=" << m.getPrice() << ")" << std::endl;
                 return true;
             }
         }
@@ -215,10 +231,10 @@ bool VERBOSE = 1;
         std::vector<std::shared_ptr<Unit>>& lordUnits = (p == blue?blueUnits:redUnits);
         if (!positionTaken(pos)) {
             lordUnits.push_back(u);
-            say std::cout << "added unit" << std::endl;
+            //say std::cout << "added unit " << u->toString() << std::endl;
             return true;
         }
-        say std::cout << "failed to add unit" << std::endl;
+        //say std::cout << "failed to add unit " << u->toString() << std::endl;
         return false;
     }
 
@@ -255,5 +271,22 @@ bool VERBOSE = 1;
     }
 
     void Game::checkUnits() {
+		std::vector<unit_ptr> units = getUnits();
+		for (std::vector<unit_ptr>::const_iterator it = units.begin(); it != units.end(); ++it) {
+			if ((*it)->alive()) {
+				(*it)->replenish();
+			}
+			else {
+				if (VERBOSE) std::cout << (*it)->toString() << " was defeated " << std::endl;
+				killUnit((*it));
+			}
+		}
         // TODO
     }
+    
+    void Game::killUnit(unit_ptr unit) {
+		std::vector<unit_ptr>& list = (unit->getOwner() == blue ? blueUnits : redUnits);
+		std::vector<unit_ptr>::const_iterator it = std::find(list.begin(), list.end(), unit);
+		if (it != list.end())
+			list.erase(it);
+	}

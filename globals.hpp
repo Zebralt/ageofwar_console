@@ -10,5 +10,4 @@
     typedef std::shared_ptr<Model> model_ptr;
     typedef std::shared_ptr<Unit> unit_ptr;
 
-
 #endif // globals_hpp_

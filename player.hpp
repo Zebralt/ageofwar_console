@@ -30,6 +30,8 @@
         virtual Model& buy(std::vector<std::shared_ptr<Model>>&) = 0;
 
         void give(unsigned int i) { gold += i;}
+        
+        std::string toString();
 
     };
 

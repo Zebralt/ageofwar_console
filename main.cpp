@@ -5,6 +5,7 @@
 
 #include <fstream>
 #include <string>
+#include <string.h>
 
 using namespace std;
 
@@ -24,25 +25,24 @@ void  inst(std::vector<Point*>& ae) {
     ae.push_back(i);
 }
 
-int main()
+int main(int argc, char* argv[])
 {
+	
     AI red("Red");
     AI blue("Blue");
-    Game aowg(red,blue);
+    Game aowg(blue, red);
+	if (argc > 1 && !strcmp(argv[1],"-v")) {
+		aowg.setVerbose(1);
+	}
 
     std::ofstream AowFile;
     //AowFile.open("test.txt", std::ios::app); //open file
-
-    // main loop would look like this :
     //initFile(AowFile, aowg);
-
-//    aowg.listModels();
 
     ///if (false)
 
     while(!aowg.hasEnded()) {
         std::cout << '{';
-        aowg.display();
         aowg.unravel();
         std::cout << '}' << std::endl;
     }
