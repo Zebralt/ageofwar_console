@@ -39,10 +39,11 @@
     }
 
     void Human::play(Game& game) {
-        game.purchase(*this, buy(game.getModels()));
+        std::vector<model_ptr>& models = game.getModels();
+        game.purchase(*this, buy(models));
     }
 
-    Model& Human::buy(std::vector<Model> mods)
+    Model& Human::buy(std::vector<model_ptr>& mods)
     {
         std::cout << "Rentrez le numero de l unite a acheter parmis les suivantes :" << std::endl;
         unsigned int i=0;
@@ -68,7 +69,7 @@
 
 
 
-    Model& AI::buy(std::vector<Model> mods) {
+    Model& AI::buy(std::vector<model_ptr>& mods) {
         Model& temp = mods[0];
         for (unsigned int i=1; i<mods.size(); i++)
         {

@@ -36,7 +36,9 @@ int main()
     // main loop would look like this :
     //initFile(AowFile, aowg);
 
-    //if (false)
+//    aowg.listModels();
+
+    ///if (false)
 
     while(!aowg.hasEnded()) {
         std::cout << '{';

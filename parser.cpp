@@ -97,18 +97,18 @@ typedef unsigned int uint;
                             statValues[i] = atoi(statList[i].c_str());
                         }
                     }
-                    Model newModel(name, statValues);
+                    std::shared_ptr<Model> newModel(new Model(name, statValues));
                     if (spl.size() >= 4) {
                         stringList actionList = split(spl[2],',');
 
                         for (uint i=0; i<actionList.size(); i++) {
-                            newModel.actions.push_back(GET_ACTION(actionList[i]));
+                            newModel->actions.push_back(GET_ACTION(actionList[i]));
                         }
                         // si pas assez d'actions
                         for (int i=actionList.size();i<game.nbPhases; i++) {
-                            newModel.actions.push_back(IDLE);
+                            newModel->actions.push_back(IDLE);
                         }
-                        newModel.nbActions = atoi(spl[3].c_str());
+                        newModel->nbActions = atoi(spl[3].c_str());
                     }
                     else {
                         print ":Actions: incorrect syntax." << lend;

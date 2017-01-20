@@ -8,6 +8,7 @@
 
     Unit::Unit(Player& player, Model& um) : model(um), owner(player) {
         health = um.maxHP;
+        remainingActions = um.nbActions;
     }
 
     Unit::Unit(Unit const& u) : model(u.model), owner(u.owner) {

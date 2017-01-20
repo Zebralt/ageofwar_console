@@ -4,6 +4,7 @@
 #include <vector>
 #include <memory>
 #include "parser.hpp"
+#include "globals.hpp"
 
 /// GAME STATUS FLAGS
 
@@ -39,23 +40,22 @@
         int goldPerTurn = 0;
         int nbPhases = 3; /* nombre de phases d'action */
 
-        std::vector<Model> models;
+        std::vector<model_ptr> models;
         int redCursor = 0;
         int blueCursor = 0; /* positions des unités de A et B les plus avancées */ /* du front en somme */
 //		std::vector<Unit> battlefieldUnits; /*Représentation du terrain et des unités présentes */
-        std::vector<std::shared_ptr<Unit>> blueUnits;
-        std::vector<std::shared_ptr<Unit>> redUnits;
+        std::vector<unit_ptr> blueUnits;
+        std::vector<unit_ptr> redUnits;
 
-        bool addUnit(std::shared_ptr<Unit>, Player&);
     public:
         Game(Player&, Player&);
 
         int hasEnded();
 
-        std::vector<std::shared_ptr<Unit>> getUnits();
-        std::vector<std::shared_ptr<Unit>>& getUnits(Player& p);
+        std::vector<unit_ptr> getUnits();
+        std::vector<unit_ptr>& getUnits(Player& p);
 
-        std::vector<Model>& getModels();
+        std::vector<model_ptr>& getModels();
 
         int getEnemyCursor(Player&);
 
@@ -67,7 +67,7 @@
 
         int getBattlefieldLength();
 
-        void addModel(Model);
+        void addModel(model_ptr);
 
         bool positionTaken(int); /* check if position is free */
 
@@ -100,6 +100,7 @@
 
         // remove units if dead
         void checkUnits();
+        bool addUnit(std::shared_ptr<Unit>, Player&);
 
     };
 

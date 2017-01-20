@@ -2,6 +2,7 @@
 #define player_hpp__
 #include <string>
 #include <vector>
+#include <memory>
 
 
     class Game;
@@ -26,9 +27,10 @@
         unsigned int getGold();
         void debit(int i);
         void takeDamage(int i);
-        virtual Model& buy(std::vector<Model>) = 0;
+        virtual Model& buy(std::vector<std::shared_ptr<Model>>&) = 0;
 
         void give(unsigned int i) { gold += i;}
+
     };
 
     std::ostream& operator<<(std::ostream&, const Player&);
@@ -39,7 +41,7 @@
         Human(std::string);
 
         void play(Game&);
-        Model& buy(std::vector<Model>);
+        Model& buy(std::vector<std::shared_ptr<Model>>&);
     };
 
     class AI : public Player {
@@ -49,7 +51,7 @@
         AI();
 
         void play(Game&);
-        Model& buy(std::vector<Model>);
+        Model& buy(std::vector<std::shared_ptr<Model>>&);
     };
 
 #endif // player_hpp__

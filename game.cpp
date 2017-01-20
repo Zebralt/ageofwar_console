@@ -6,7 +6,6 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <memory>
 
 #define stringList std::vector<std::string>
 #define print std::cout <<
@@ -17,7 +16,7 @@
 
 typedef unsigned int uint;
 
-bool VERBOSE = true;
+bool VERBOSE = 1;
 
     bool operator==(Player& p, Player& q) {
         return p.getName() == q.getName();
@@ -39,7 +38,7 @@ bool VERBOSE = true;
         return (p == blue?red:blue);
     }
 
-    void Game::addModel(Model um) {
+    void Game::addModel(std::shared_ptr<Model> um) {
         models.push_back(um);
     }
 
@@ -76,6 +75,8 @@ bool VERBOSE = true;
         std::vector<std::shared_ptr<Unit>> units;
         units.insert(std::end(units), std::begin(blueUnits), std::end(blueUnits));
         units.insert(std::end(units), std::begin(redUnits), std::end(redUnits));
+//        for (int i=0;i<blueUnits.size();i++) units.push_back(blueUnits[i]);
+//        for (int i=0;i<redUnits.size();i++) units.push_back(redUnits[i]);
         return units;
     }
 
@@ -83,14 +84,14 @@ bool VERBOSE = true;
         return (p == blue ? blueUnits : redUnits);
     }
 
-    std::vector<Model>& Game::getModels() {
+    std::vector<std::shared_ptr<Model>>& Game::getModels() {
         return models;
     }
 
     bool Game::loadConfig() {
         Parser parser(*this);
         bool b = parser.parse("info.cfg");
-        listModels();
+//        listModels();
         return b;
     }
 
@@ -114,32 +115,38 @@ bool VERBOSE = true;
         //int direction = getDirection(currentPlayer);
         std::vector<std::shared_ptr<Unit>>& units = getUnits(currentPlayer);
         for (int phase=0;phase < nbPhases; phase++) {
+            say std::cout << "Phase " << phase << ":" << std::endl;
             for (std::vector<std::shared_ptr<Unit>>::const_iterator it = units.begin(); it != units.end(); ++it) { /* reste a ajouter la gestion dans l'autre sens */
-                if (*it) {
-                    if ((*it)->haveRemainingActions()) {
-                        switch ((*it)->getModel().getActions().at(phase)) {
+
+                std::shared_ptr<Unit> unit = *it;
+                if (unit != nullptr) {
+                    if (unit->haveRemainingActions()) {
+                        std::vector<Action>& actions = unit->getModel().getActions();
+                        if (actions.size() >= nbPhases)
+                        switch (actions.at(phase)) {
                             case ATTACK:
-                                if ((*it)->engage(*this)) {
-                                    (*it)->act();
-                                    say std::cout << "success in attacking" << std::endl;
+                                if (unit->engage(*this)) {
+                                    unit->act();
+                                    say std::cout << unit->getName() << " succeeded in attacking" << std::endl;
                                 }
                                 else {
-                                    say std::cout << "couldn't attack" << std::endl;
+                                    say std::cout << unit->getName() << " couldn't attack" << std::endl;
                                 }
                             break;
                             case MOVE:
-                                if ((*it)->advance(*this)) {
-                                    (*it)->act();
-                                    say std::cout << "success in moving" << std::endl;
+                                if (unit->advance(*this)) {
+                                    unit->act();
+                                    say std::cout << unit->getName() << "succeeded in moving" << std::endl;
                                 }
                                 else {
-                                    say std::cout << "couldn't move" << std::endl;
+                                    say std::cout << unit->getName() <<  " couldn't move" << std::endl;
                                 }
                             break;
                             case IDLE:
                             default:
                             break;
                         }
+                        else std::cout << "what? " << actions.size() << std::endl;
                     }
                 }
             }
@@ -185,13 +192,13 @@ bool VERBOSE = true;
     void Game::listModels() {
         print "Registered models:" << lend;
         for (uint i=0; i<models.size(); i++) {
-            print models[i].toString() << lend;
+            print models[i]->toString() << lend;
         }
         newLine;
     }
 
     bool Game::purchase(Player& p, Model& m) {
-        say std::cout << p.getName() << " is trying to buy " << m.getName() << std::endl;
+        //say std::cout << p.getName() << " is trying to buy " << m.getName() << std::endl;
         if (p.getGold() >= m.getPrice()) {
             std::shared_ptr<Unit> u(new Unit(p,m));
             if (addUnit(u,p)) {

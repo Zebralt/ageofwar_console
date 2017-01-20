@@ -5,7 +5,7 @@
 #include <vector>
 #include "parser.hpp"
 
-    enum Action {ATTACK, MOVE, IDLE};
+    enum Action {ATTACK = 0, MOVE, IDLE};
 
     class Model {
     protected:
@@ -17,8 +17,8 @@
         int flags;
 
         int attackScore = 1;
-        int range = 1;          // portÃ©e maximale
-        int minimumRange = 0; // portÃ©e minimale
+        int range = 1;          // portée maximale
+        int minimumRange = 0; // portée minimale
         int trample = 0;        // area of effect
 
     public:
