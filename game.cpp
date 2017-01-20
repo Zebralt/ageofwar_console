@@ -311,15 +311,11 @@ typedef unsigned int uint;
         return battlefieldLength;
     }
 
-    bool Game::damageCastle(Player& p, int dam) {
-        /*if (p == blue || p == red) {
-            if (getCursor(p) < 0 || getCursor(p) > battlefieldLength - 1) {
-                p.takeDamage(dam);
-                return true;
-            }
-        }*/
-        /// TODO : GAME::DAMAGE_CASTLE
-        return false;
+   void Game::damageCastle(Player& p, int dam) {
+        if (p == blue || p == red)
+        {
+            p.takeDamage(dam);
+        }
     }
 
     void Game::checkUnits() {

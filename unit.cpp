@@ -128,21 +128,18 @@
     }
 
     bool Unit::checkForEnemyCastle(Game& game) {
-        std::cout << owner.getName() << " " << game.getDirection(owner) << std::endl;
-        if( game.getDirection(owner)==1 && pos + model.getRange() >= game.getBattlefieldLength()-1)
+        if( ( game.getDirection(owner)==1 && pos + model.getRange() >= game.getBattlefieldLength()-1 ) || ( game.getDirection(owner)==0 && pos - model.getRange() <= 0) )
         {
-            return attackEnemyCastle(game.getRed());
-        }
-        if( game.getDirection(owner)==0 && pos - model.getRange() <= 0)
-        {
-            return attackEnemyCastle(game);
+            std::cout << model.getName() << " from " << owner.getName() << " in position " << pos << " will attack ennemy castle" << std::endl;
+            attackEnemyCastle(game);
+            return true;
         }
         std::cerr << model.getName() << " in position " << pos << " can't attack ennemy castle" << std::endl;
         return false;
     }
 
-    bool Unit::attackEnemyCastle(Game& game) {
-        return game.damageCastle(owner, model.attackScore);
+    void Unit::attackEnemyCastle(Game& game) {
+       (owner==game.getBlue()) ? game.damageCastle(game.getRed(), model.attackScore) : game.damageCastle(game.getBlue(),model.attackScore);
     }
 
     std::string Unit::toString() {

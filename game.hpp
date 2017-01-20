@@ -85,7 +85,7 @@
         bool purchase(Player&, Model&);
         /* main function of game running */
         void unravel();
-        bool damageCastle(Player& p, int); // infliger des degats au chateau du joueur:
+        void damageCastle(Player& p, int); // infliger des degats au chateau du joueur:
         // remove units if dead
         void checkUnits();
         bool addUnit(std::shared_ptr<Unit>, Player&);

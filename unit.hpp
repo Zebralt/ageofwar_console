@@ -17,7 +17,7 @@
         int pos = -1;
         int remainingActions = model.nbActions;
         int id;
-        
+
         static int instanceCount;
 
     public:
@@ -28,7 +28,7 @@
         void takeDamage(int);
         bool alive();
 
-        bool attackEnemyCastle(Game&);
+        void attackEnemyCastle(Game&);
         bool checkForEnemyCastle(Game&); /* est-on a portee de la base ennemie ? */
         std::vector<std::shared_ptr<Unit>> checkLineOfSight(Game&);
         bool attack(Unit&);
@@ -52,11 +52,11 @@
         Player& getOwner() { return owner; }
 
         std::string toString();
-        std::string healthRatio() 
+        std::string healthRatio()
         { return "[" + std::to_string(health) + "/" + std::to_string(model.maxHP) + "]"; }
 
         friend std::ostream& operator<<(std::ostream&, const Unit&);
-        
+
         void replenish();
     };
 
