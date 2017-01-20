@@ -58,7 +58,7 @@
         int dir = (game.getDirection(owner) ? 1 : -1);
         int len = game.getBattlefieldLength();
         int start = (dir ? 0 : len-1);
-        
+
         // CURSORS ?
         /*short ratio = (direction?1:-1);
         if ( // si on n'atteint meme pas la premiere unite ennemie
@@ -116,27 +116,32 @@
             for (std::vector<unit_ptr>::iterator it = potential_targets.begin(); it != potential_targets.end(); ++it) {
                 if (attack(**it)) {
 					if (game.VERBOSE) std::cout << '\t' << std::setw(20) << toString() << "\tattacks\t" << std::setw(20) <<(*it)->toString() << "\tdealing\t" << std::to_string(model.attackScore) << " damage : " << (*it)->healthRatio() << std::endl;
-					return 1;	
+					return 1;
 				}
             }
+        }
+        else if (potential_targets.size()==0)
+        {
+            return checkForEnemyCastle(game);
         }
         return 0;
     }
 
     bool Unit::checkForEnemyCastle(Game& game) {
-        /*int dir = game.getDirection(owner);
-        if ((dir && game.getEnemyCursor(owner) < 0) || (!dir && game.getEnemyCursor(owner) >= game.getBattlefieldLength())) {
-            if ((dir && pos + model.range >= game.getBattlefieldLength()-1) || (!dir && pos - model.range <= 0)) {
-                attackEnemyCastle(game);
-                return true;
-            }
-        }*/
-        /// TODO SPOT ENEMY CASTLE
+        std::cout << owner.getName() << " " << game.getDirection(owner) << std::endl;
+        if( game.getDirection(owner)==1 && pos + model.getRange() >= game.getBattlefieldLength()-1)
+        {
+            return attackEnemyCastle(game.getRed());
+        }
+        if( game.getDirection(owner)==0 && pos - model.getRange() <= 0)
+        {
+            return attackEnemyCastle(game);
+        }
+        std::cerr << model.getName() << " in position " << pos << " can't attack ennemy castle" << std::endl;
         return false;
     }
 
     bool Unit::attackEnemyCastle(Game& game) {
-		/// TODO ATTACK ENEMY CASTLE
         return game.damageCastle(owner, model.attackScore);
     }
 
@@ -145,7 +150,7 @@
         fin += owner.getName() + "::" + getName() + "(" + std::to_string(id) +")";// + "(pos=" + std::to_string(pos) + ")";
         return fin;
     }
-    
+
     void Unit::replenish() {
 		remainingActions = model.nbActions;
 	}
