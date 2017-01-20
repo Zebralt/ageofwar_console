@@ -3,6 +3,10 @@
 
 #include <vector>
 #include <memory>
+#include <iostream>
+#include <string>
+#include <sstream>
+
 #include "globals.hpp"
 
 /// GAME STATUS FLAGS
@@ -16,6 +20,9 @@
 #define UNKNOWN_HEADER      1
 #define SYNTAX_ERROR        2
 
+
+#define SSTR( x ) static_cast< std::ostringstream & >( \
+        ( std::ostringstream() << std::dec << x ) ).str()
 #define NEW(type, nb) (type*) calloc((unsigned) nb,sizeof(type))
 
     class Player;
@@ -64,9 +71,10 @@
         //Player& getEnemy(Player&);
         //int getCursor(Player&);
         int getCurrentTurn() { return currentTurn; }
-        
+
         /// DISPLAY
         void display();
+        void printCorrectWidth(int,int);
         void listModels();
 		bool VERBOSE = 0;
 		void setVerbose(bool);
@@ -82,10 +90,10 @@
         void checkUnits();
         bool addUnit(std::shared_ptr<Unit>, Player&);
 		void killUnit(unit_ptr);
-		
+
 		/* bombarde un emplacement ; utilisé par TRAMPLE(AOE)CATAPULTE*/
 		std::vector<unit_ptr> bombard(int spot, int attackScore);
-		
+
     };
 
     bool operator==(Player& p, Player& q);

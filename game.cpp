@@ -14,7 +14,7 @@ typedef unsigned int uint;
     bool operator==(Player& p, Player& q) {
         return p.getName() == q.getName();
     }
-    
+
     void Game::setVerbose(bool b) {
 		VERBOSE = b;
 	}
@@ -34,7 +34,7 @@ typedef unsigned int uint;
     void Game::addModel(model_ptr um) {
         models.push_back(um);
     }
-    
+
      bool Game::positionTaken(int pos) {
         std::vector<unit_ptr> units = getUnits();
 		for (unsigned int i=0;i<units.size();i++) {
@@ -43,7 +43,7 @@ typedef unsigned int uint;
 		}
 		return false;
     }
-    
+
     unit_ptr Game::getUnitAt(int pos) {
 		std::vector<unit_ptr> units = getUnits();
 		for (unsigned int i=0;i<units.size();i++) {
@@ -86,7 +86,7 @@ typedef unsigned int uint;
         Parser parser(*this);
         bool b = parser.parse("info.cfg");
 		if (VERBOSE) {
-			std::cout << "Loading models: " << std::endl; 
+			std::cout << "Loading models: " << std::endl;
 			listModels();
 		}
         return b;
@@ -150,40 +150,84 @@ typedef unsigned int uint;
     }
 
     void Game::display() {
-		int wspace = 4;
-		bool displayId = 0;
-        //std::cout << blue;
-        //for (int x=0;x<wspace;x++) std::cout << " ";
-        std::cout << blue.toString() <<" gold=" << blue.getGold() << " health=" << blue.getHealth();
-        for (int x=0;x<(wspace-2)*battlefieldLength;x++) std::cout << " ";
-        std::cout << red.toString() <<" gold=" << red.getGold() << " health=" << red.getHealth();
-        std::cout << std::endl;
-        for (int i=0;i<battlefieldLength;i++)
-			if (unit_ptr upt = getUnitAt(i)) {
-				std::cout << std::setw(wspace) << (upt->getOwner() == blue?'>':'<');
-			}
-			else for (int y=0;y<wspace;y++) std::cout << ' ';
-		std::cout << std::endl;
-        if (displayId) {
-			for (int i=0;i<battlefieldLength;i++)
-			if (unit_ptr upt = getUnitAt(i)) {
-				std::cout << std::setw(wspace) << upt->getId();
-			}
-			else for (int x=0;x<wspace;x++) std::cout << ' ';
-			std::cout << std::endl;
-		}
-        for (int i=0;i<battlefieldLength;i++)
+        int i;
+        int width = 7;
+        unit_ptr temp;
+        std::string s;
+
+        //1ere ligne : noms
+        std::cout << blue.getName() ;
+        printCorrectWidth(blue.getName().size() ,width);
+        std::cout << "||| " ;
+        for(i=0; i<battlefieldLength ;i++)
         {
-            if (positionTaken(i)) std::cout << std::setw(4) << getUnitAt(i)->getName()[0];
-            else std::cout << std::setw(wspace) << "_";
+            temp = getUnitAt(i);
+            if(temp == nullptr)
+            {
+                printCorrectWidth(0,width);
+            }
+            else
+            {
+                std::cout << " " <<temp->getName();
+                printCorrectWidth(temp->getName().size() ,width);
+            }
+            std::cout << " ||" ;
         }
-        //std::cout << red;
-        std::cout << std::endl;
-        //std::cout << "       ";
-        for (int i=0;i<battlefieldLength;i++) {
-			std::cout << std::setw(wspace) << i;
-		}
-		std::cout << std::endl;
+        std::cout << "| "  << red.getName() << std::endl;
+
+        //2e ligne : santé
+        s = " HP";
+        std::cout << blue.getHealth() << s;
+        printCorrectWidth(s.size() + SSTR(blue.getHealth()).size() ,width);
+        std::cout << "||| ";
+        for(i=0; i<battlefieldLength ;i++)
+        {
+            temp = getUnitAt(i);
+            if(temp == nullptr)
+            {
+                printCorrectWidth(1,width);
+            }
+            else
+            {
+                std::cout << " " << temp->getHealth() << s;
+                printCorrectWidth(s.size() + SSTR(temp->getHealth()).size() +1,width);
+            }
+            std::cout << "  ||" ;
+        }
+        std::cout << "| "  << red.getHealth() << s << std::endl;
+
+        //3e ligne : gold
+        s=" gold";
+        std::cout << blue.getGold() << s;
+        printCorrectWidth(s.size() + SSTR(blue.getGold()).size() ,width);
+        std::cout << "||| ";
+        for(i=0; i<battlefieldLength ;i++)
+        {
+            temp = getUnitAt(i);
+            if(temp == nullptr)
+            {
+                printCorrectWidth(1,width);
+            }
+            else
+            {
+                temp->getOwner()==blue?std::cout<<" >":std::cout<<" <";
+                printCorrectWidth(2,width);
+            }
+            std::cout << "  ||" ;
+        }
+        std::cout << "| "  << red.getGold() << s << std::endl;
+    }
+
+    void Game::printCorrectWidth(int actualSize, int width)
+    {
+        if(actualSize<width)
+        {
+            int j=width-actualSize;
+            for(j; j>=0; j--)
+            {
+                std::cout << " ";
+            }
+        }
     }
 
     void Game::unravel() {
@@ -290,10 +334,10 @@ typedef unsigned int uint;
 			}
 		}
     }
-    
+
     void Game::killUnit(unit_ptr unit) {
 		std::vector<unit_ptr>& list = getUnits(unit->getOwner());
-		std::vector<unit_ptr>::const_iterator it = std::find(list.begin(), list.end(), unit);
+		std::vector<unit_ptr>::iterator it = std::find(list.begin(), list.end(), unit);
 		if (it != list.end())
 			list.erase(it);
 	}

@@ -9,8 +9,7 @@
 
 using namespace std;
 
-void initFile(std::ofstream& file, Game&);
-void printBattlefield(std::ofstream& file, Game& g);
+//void printBattlefield(std::ofstream& file, Game& g);
 
 struct Point { int x,y; Point(int a, int b) : x(a), y(b){}};
 
@@ -27,7 +26,7 @@ void  inst(std::vector<Point*>& ae) {
 
 int main(int argc, char* argv[])
 {
-	
+
     AI red("Red");
     AI blue("Blue");
     Game aowg(blue, red);
@@ -36,16 +35,17 @@ int main(int argc, char* argv[])
 	}
 
     std::ofstream AowFile;
-    //AowFile.open("test.txt", std::ios::app); //open file
-    //initFile(AowFile, aowg);
+    AowFile.open("AoWGame.txt", std::ios::app); //open file
+//    printBattlefield(AowFile,aowg);
 
     ///if (false)
 
     while(!aowg.hasEnded()) {
-        std::cout << '{';
-        std::cout << "Turn " << aowg.getCurrentTurn() << ':' << std::endl;
+        std::cout << "\n\n{";
+        std::cout << "Turn " << aowg.getCurrentTurn() << ":" << std::endl;
         aowg.unravel();
-        std::cout << '}' << std::endl;
+        std::cout << "}"<< std::endl;
+//        printBattlefield(AowFile,aowg);
     }
 
     /*std::vector<Point*> ae;
@@ -58,24 +58,6 @@ int main(int argc, char* argv[])
 
     return 0;
 }
-
-//
-//void initFile(std::ofstream& file, Game& g)
-//{
-//    if(file)
-//    {
-//        file << g.getRed().getName() << "\t";
-//        for(int i = 0; i<g.getBattlefieldLength(); i++)
-//        {
-//            file << "     " ;
-//        }
-//        file << "\t" << g.getBlue().getName() << endl;
-//        for(int i=0; i<g.getBattlefieldLength(); i++)
-//        {
-//            file << "  _  " ;
-//        }
-//    }
-//}
 //
 //void printBattlefield(ofstream& file, Game& g)
 //{
@@ -86,25 +68,9 @@ int main(int argc, char* argv[])
 //    {
 //        file << endl;
 //    }
-//    //Unités rouges
-//    for(i=0; i<g.getCursor(red) ; i++)
-//    {
-//        if(g.getUnits()[i]==nullptr)   {file << " _ ";}
-//        else{file <<g.getUnits()[i]->getModel().getName() ; }
-//    }
-//    file << "\t" ;
-//    //No Man's Land
-//    for (i=g.getCursor(red); i<g.getCursor(blue) ; i++)
-//    {
-//        file << " _ ";
-//    }
-//    file << "\t";
-//    //Unités bleues
-//    for(i=g.getCursor(blue); i<g.getBattlefieldLength() ; i++)
-//    {
-//        if(g.getUnits()[i]==nullptr)   {file << " _ ";} /*!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-//        else{file << g.getUnits()[i]->getModel().getName() ; }
-//    }
 //
-//    std::cerr << "Impossible d ouvrir le fichier" << endl;
+//    else
+//    {
+//        std::cerr << "Impossible d ouvrir le fichier" << endl;
+//    }
 //}
