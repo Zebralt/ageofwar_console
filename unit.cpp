@@ -128,7 +128,7 @@
     }
 
     bool Unit::checkForEnemyCastle(Game& game) {
-        if( ( game.getDirection(owner)==1 && pos + model.getRange() >= game.getBattlefieldLength()-1 ) || ( game.getDirection(owner)==0 && pos - model.getRange() <= 0) )
+        if( ( game.getDirection(owner)==1 && pos + model.getMinimumRange() >= game.getBattlefieldLength()-1 ) || ( game.getDirection(owner)==0 && pos - model.getMinimumRange() <= 0) )
         {
             std::cout << model.getName() << " from " << owner.getName() << " in position " << pos << " will attack ennemy castle" << std::endl;
             attackEnemyCastle(game);
