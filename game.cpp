@@ -11,14 +11,6 @@
 
 typedef unsigned int uint;
 
-    bool operator==(Player& p, Player& q) {
-        return p.getName() == q.getName();
-    }
-
-    void Game::setVerbose(bool b) {
-		VERBOSE = b;
-	}
-
     Game::Game(Player& b, Player& r) : red(r), blue(b)
     {
         loadConfig();
@@ -27,24 +19,44 @@ typedef unsigned int uint;
         currentTurn = 0;
     }
 
-    int Game::hasEnded() {
-        return status() & SETTLED || status() & DRAW;
+    /// LOADER
+
+    bool Game::loadConfig() {
+        Parser parser(*this);
+        bool b = parser.parse("info.cfg");
+		if (VERBOSE) {
+			std::cout << "Loading models: " << std::endl;
+			listModels();
+		}
+        return b;
     }
 
     void Game::addModel(model_ptr um) {
         models.push_back(um);
     }
 
-     bool Game::positionTaken(int pos) {
-        std::vector<unit_ptr> units = getUnits();
-		for (unsigned int i=0;i<units.size();i++) {
-            if (units[i]->getPosition() == pos)
-                return true;
-		}
-		return false;
+    /// GAME STATUS CHECK
+
+    int Game::hasEnded() {
+        short st = status();
+        if (st & SETTLED) {
+            std::cout << std::endl << "The winner is " << (st & BLUE_WINS?blue:red).toString() << "!" << std::endl;
+        }
+        else if (st & DRAW) {
+            std::cout << std::endl << "End turn reached. The game is a draw. " << std::endl;
+        }
+        return st & SETTLED || st & DRAW;
     }
 
-    unit_ptr Game::getUnitAt(int pos) {
+    short Game::status() {
+        if (red.getHealth() <= 0 && blue.getHealth() <= 0) return DRAW; // 0x10
+        else if (red.getHealth() <= 0 && blue.getHealth() > 0) return SETTLED | BLUE_WINS; // 0x110
+        else if (red.getHealth() > 0 && blue.getHealth() <= 0) return SETTLED | RED_WINS; // 0x1010
+        else if (currentTurn >= nbturns) return DRAW; // 0x10
+        else return PLAYING; // 0x1
+    }
+
+        unit_ptr Game::getUnitAt(int pos) {
 		std::vector<unit_ptr> units = getUnits();
 		for (unsigned int i=0;i<units.size();i++) {
             if (units[i]->getPosition() == pos)
@@ -52,6 +64,8 @@ typedef unsigned int uint;
 		}
 		return nullptr;
 	}
+
+	/// GETTERS
 
     Player& Game::getBlue() {
         return blue;
@@ -61,9 +75,9 @@ typedef unsigned int uint;
         return red;
     }
 
-    Player* Game::getWinner() {
-		if (status() & BLUE_WINS) return &blue;
-		else if (status() & RED_WINS) return &red;
+    std::shared_ptr<Player> Game::getWinner() {
+		if (status() & BLUE_WINS) return std::shared_ptr<Player>(&blue);
+		else if (status() & RED_WINS) return std::shared_ptr<Player>(&red);
 		else return nullptr;
     }
 
@@ -82,71 +96,49 @@ typedef unsigned int uint;
         return models;
     }
 
-    bool Game::loadConfig() {
-        Parser parser(*this);
-        bool b = parser.parse("info.cfg");
-		if (VERBOSE) {
-			std::cout << "Loading models: " << std::endl;
-			listModels();
-		}
-        return b;
-    }
-
-    /*int Game::getEnemyCursor(Player& p) {
-        if (p == red) {
-            return blueCursor;
-        }
-        else return redCursor;
-    }*/
-
-    /*int Game::getCursor(Player& p) {
-        return (p == red?redCursor:blueCursor);
-    }*/
-
     int Game::getDirection(Player& p) {
         return p == blue;
     }
 
-    bool Game::runPhases(Player& currentPlayer) {
-        std::vector<std::shared_ptr<Unit>>& units = getUnits(currentPlayer);
-        for (int phase=0;phase < nbPhases; phase++) {
-            if (VERBOSE) std::cout <<"(" << currentPlayer.toString() << ")" << "Phase " << phase << ": " << std::endl;
-            for (std::vector<std::shared_ptr<Unit>>::const_iterator it = units.begin(); it != units.end(); ++it) { /* reste a ajouter la gestion dans l'autre sens */
+    /// DISPLAY
 
-                std::shared_ptr<Unit> unit = *it;
-                if (unit != nullptr) {
-                    if (unit->haveRemainingActions()) {
-                        std::vector<Action>& actions = unit->getModel().getActions();
-                        if (actions.size() >= nbPhases)
-                        switch (actions.at(phase)) {
-                            case ATTACK:
-                                if (unit->engage(*this)) {
-                                    unit->act();
-                                    //say std::cout << '\t' << unit->toString() << " engaged " << "(" << unit->haveRemainingActions() << " action" << (unit->haveRemainingActions() > 1?"s":"") <<  " left)" << std::endl;
-                                }
-                                else {
-                                    //say std::cout << '\t' << unit->toString() << " couldn't attack" << std::endl;
-                                }
-                            break;
-                            case MOVE:
-                                if (unit->advance(*this)) {
-                                    unit->act();
-                                    //say std::cout << '\t' << unit->toString() << " moved " << "(" << unit->haveRemainingActions() << " action" << (unit->haveRemainingActions() > 1?"s":"") <<  " left)" << std::endl;
-                                }
-                                else {
-                                    //say std::cout << '\t' << unit->toString() <<  " couldn't move" << std::endl;
-                                }
-                            break;
-                            case IDLE:
-                            default:
-                            break;
-                        }
-                        else std::cout << "what? " << actions.size() << std::endl;
-                    }
-                }
-            }
+    void Game::setVerbose(bool b) {
+		VERBOSE = b;
+	}
+
+    void Game::minimalDisplay() {
+		int wspace = 4;
+		bool displayId = 0;
+        std::cout << blue.toString() <<" gold=" << blue.getGold() << " health=" << blue.getHealth();
+        for (int x=0;x<(wspace-2)*battlefieldLength;x++) std::cout << " ";
+        std::cout << red.toString() <<" gold=" << red.getGold() << " health=" << red.getHealth();
+        std::cout << std::endl;
+        for (int i=0;i<battlefieldLength;i++)
+			if (unit_ptr upt = getUnitAt(i)) {
+				std::cout << std::setw(wspace) << (upt->getOwner() == blue?'>':'<');
+			}
+			else for (int y=0;y<wspace;y++) std::cout << ' ';
+		std::cout << std::endl;
+        if (displayId) {
+			for (int i=0;i<battlefieldLength;i++)
+			if (unit_ptr upt = getUnitAt(i)) {
+				std::cout << std::setw(wspace) << upt->getId();
+			}
+			else for (int x=0;x<wspace;x++) std::cout << ' ';
+			std::cout << std::endl;
+		}
+        for (int i=0;i<battlefieldLength;i++)
+        {
+            if (positionTaken(i)) std::cout << std::setw(4) << getUnitAt(i)->getName()[0];
+            else std::cout << std::setw(wspace) << "_";
         }
-        return true;
+        //std::cout << red;
+        std::cout << std::endl;
+        //std::cout << "       ";
+        for (int i=0;i<battlefieldLength;i++) {
+			std::cout << std::setw(wspace) << i;
+		}
+		std::cout << std::endl;
     }
 
     void Game::display() {
@@ -230,33 +222,6 @@ typedef unsigned int uint;
         }
     }
 
-    void Game::unravel() {
-        red.give(goldPerTurn);
-        blue.give(goldPerTurn);
-        if (VERBOSE) display();
-        runPhases(blue);
-        if (VERBOSE) std::cout << std::endl << blue.toString() << " move is " << std::endl;
-        blue.play(*this);
-        if (VERBOSE) display();
-        runPhases(red);
-        if (VERBOSE) display();
-        if (VERBOSE)  std::cout << std::endl << red.toString() << " move is " << std::endl;
-        red.play(*this);
-        checkUnits();
-        //updateCursors();
-        display();
-        currentTurn++;
-    }
-
-    short Game::status() {
-		/// TODO : GAME STATUS CHECK
-        if (!red.getHealth() && !blue.getHealth()) return DRAW;
-        else if (!red.getHealth() && blue.getHealth()) return SETTLED & BLUE_WINS;
-        else if (red.getHealth() && !blue.getHealth()) return SETTLED & RED_WINS;
-        else if (currentTurn >= nbturns) return DRAW;
-        else return PLAYING;
-    }
-
     void Game::listModels() {
         std::cout << "Registered models:" << std::endl;
         for (uint i=0; i<models.size(); i++) {
@@ -265,13 +230,77 @@ typedef unsigned int uint;
         std::cout << std::endl;
     }
 
-    bool Game::purchase(Player& p, Model& m) {
-        //say std::cout << p.getName() << " is trying to buy " << m.getName() << std::endl;
-        if (p.getGold() >= m.getPrice()) {
-            std::shared_ptr<Unit> u(new Unit(p,m));
+
+    bool operator==(Player& p, Player& q) {
+        return p.getName() == q.getName();
+    }
+
+    /// INGAME BEHAVIOURS
+
+     bool Game::positionTaken(int pos) {
+        std::vector<unit_ptr> units = getUnits();
+		for (unsigned int i=0;i<units.size();i++) {
+            if (units[i]->getPosition() == pos)
+                return true;
+		}
+		return false;
+    }
+
+    bool Game::runPhases(Player& currentPlayer) {
+        std::vector<std::shared_ptr<Unit>>& units = getUnits(currentPlayer);
+        for (int phase=0;phase < nbPhases; phase++) {
+            if (VERBOSE) std::cout <<"(" << currentPlayer.toString() << ")" << "Phase " << phase << ": " << std::endl;
+            for (std::vector<std::shared_ptr<Unit>>::const_iterator it = units.begin(); it != units.end(); ++it) { /* reste a ajouter la gestion dans l'autre sens */
+
+                std::shared_ptr<Unit> unit = *it;
+                if (unit != nullptr) {
+                    if (unit->haveRemainingActions()) {
+                        std::vector<Action>& actions = unit->getModel().getActions();
+                        if (actions.size() >= nbPhases)
+                        switch (actions.at(phase)) {
+                            case ATTACK:
+                                if (unit->engage(*this)) {
+                                    unit->useAction();
+                                }
+                            break;
+                            case MOVE:
+                                if (unit->advance(*this)) {
+                                    unit->useAction();
+                                }
+                            break;
+                            case IDLE:
+                            default:
+                            break;
+                        }
+                        else std::cout << "what? " << actions.size() << std::endl;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    void Game::update() {
+        red.give(goldPerTurn);
+        blue.give(goldPerTurn);
+        runPhases(blue);
+        if (!MDISPLAY) minimalDisplay(); else display();
+        blue.play(*this);
+        runPhases(red);
+        if (VERBOSE)  std::cout << std::endl << red.toString() << " move is " << std::endl;
+        red.play(*this);
+        checkUnits();
+        if (!MDISPLAY) minimalDisplay(); else display();
+        currentTurn++;
+    }
+
+    bool Game::purchase(Player& p, model_ptr m) {
+        if (m == nullptr) return true;
+        if (p.getGold() >= m->getPrice()) {
+            std::shared_ptr<Unit> u(new Unit(p,*m));
             if (addUnit(u,p)) {
-                p.debit(m.getPrice());
-                if (VERBOSE) std::cout << p << " bought model:" << m.getName() << "(price=" << m.getPrice() << ")" << std::endl;
+                p.debit(m->getPrice());
+                if (VERBOSE) std::cout << p << " bought model:" << m->getName() << "(price=" << m->getPrice() << ")" << std::endl;
                 return true;
             }
         }
@@ -289,24 +318,6 @@ typedef unsigned int uint;
         return false;
     }
 
-    /*void Game::updateCursors() {
-        short sblue = 0x01;
-        short sred  = 0x10;
-        short searching = sblue | sred;
-        for (int i=0;i<battlefieldLength && searching;i++) {
-            if (sblue & searching && blueUnits[i] != nullptr) {
-                blueCursor = i;
-                searching -= sblue;
-            }
-            if (sred & searching && redUnits[battlefieldLength-1-i] != nullptr) {
-                redCursor = battlefieldLength-1-i;
-                searching -= sred;
-            }
-        }
-        if (searching & sred) redCursor = battlefieldLength;
-        if (searching & sblue) blueCursor = -1;
-    }*/
-
     int Game::getBattlefieldLength() {
         return battlefieldLength;
     }
@@ -315,6 +326,7 @@ typedef unsigned int uint;
         if (p == blue || p == red)
         {
             p.takeDamage(dam);
+            if (VERBOSE) std::cout << p.toString() << "'s castle took " << std::to_string(dam) << " damage (" << std::to_string(p.getHealth()) << ")"<< std::endl;
         }
     }
 
@@ -336,4 +348,13 @@ typedef unsigned int uint;
 		std::vector<unit_ptr>::iterator it = std::find(list.begin(), list.end(), unit);
 		if (it != list.end())
 			list.erase(it);
+	}
+
+	void Game::bombard(int pos, int attackScore) {
+        if (pos >= 0 && pos < battlefieldLength) {
+            if (unit_ptr unit = getUnitAt(pos)) {
+                unit->takeDamage(attackScore);
+                if (VERBOSE) std::cout << unit->toString() << " was bombarded for " << std::to_string(attackScore) << " damage (" << unit->healthRatio() << ")" << std::endl;
+            }
+        }
 	}

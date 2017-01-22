@@ -34,18 +34,23 @@
               int minimumRange,
               int trample = 0);
 
+
         Model(std::string, int*);
         Model() {}
+
+        /// GETTERS
 
         int getMaxHealth();
         std::string getName();
         unsigned int getPrice();
-
         std::vector<Action>& getActions() { return actions; }
 
         virtual ~Model() {}
 
+        /// DISPLAY
+
         std::string toString();
+        std::string stats();
     };
 
 #endif

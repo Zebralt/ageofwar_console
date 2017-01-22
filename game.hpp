@@ -12,10 +12,10 @@
 /// GAME STATUS FLAGS
 
 #define PLAYING     0x1
-#define BLUE_WINS   0x10
-#define RED_WINS    0x100
-#define SETTLED     0x1000
-#define DRAW        0x10
+#define SETTLED     0x10
+#define DRAW        0x100
+#define BLUE_WINS   0x1000
+#define RED_WINS    0x0000
 
 #define UNKNOWN_HEADER      1
 #define SYNTAX_ERROR        2
@@ -61,38 +61,44 @@
         std::vector<unit_ptr> getUnits();
         std::vector<unit_ptr>& getUnits(Player& p);
         std::vector<model_ptr>& getModels();
+        /* renvoie 1 pour le joueur de gauche, 0 pour le joueur de droite */
         int getDirection(Player&);
         int getBattlefieldLength();
         Player& getBlue();
         Player& getRed();
-        Player* getWinner();
+        std::shared_ptr<Player> getWinner();
         unit_ptr getUnitAt(int);
-        //int getEnemyCursor(Player&);
-        //Player& getEnemy(Player&);
-        //int getCursor(Player&);
         int getCurrentTurn() { return currentTurn; }
 
         /// DISPLAY
+        void minimalDisplay();
         void display();
         void printCorrectWidth(int,int);
         void listModels();
 		bool VERBOSE = 0;
+		bool MDISPLAY = 0;
 		void setVerbose(bool);
 
 		/// INGAME BEHAVIOURS
-        bool positionTaken(int); /* check if position is free */
+		/* renvoie TRUE si aucune Unit a cette position */
+        bool positionTaken(int);
+        /* deroule les phases d'action d'un joueur */
         bool runPhases(Player&);
-        bool purchase(Player&, Model&);
-        /* main function of game running */
-        void unravel();
+        /* enregistre l'achat d'une Unit par un joueur */
+        bool purchase(Player&, model_ptr);
+        /* Fonction principale de deroulement du jeu */
+        void update();
+        /* Inflige des degats au chateau (a la base) du joueur */
         void damageCastle(Player& p, int); // infliger des degats au chateau du joueur:
         // remove units if dead
+        /* supprimes les unites mortes, et met a jour les points d'actions des unites */
         void checkUnits();
+        /* ajoute une unite sur le champ de bataille */
         bool addUnit(std::shared_ptr<Unit>, Player&);
+        /* supprime une unite du champ du bataille */
 		void killUnit(unit_ptr);
-
-		/* bombarde un emplacement ; utilisé par TRAMPLE(AOE)CATAPULTE*/
-		std::vector<unit_ptr> bombard(int spot, int attackScore);
+		/* bombarde un emplacement ; utilisé par trample(catapulte, plusieurs cases attaquees)*/
+		void bombard(int spot, int attackScore);
 
     };
 

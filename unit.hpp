@@ -25,39 +25,49 @@
         Unit();
         Unit(const Unit& u);
 
-        void takeDamage(int);
-        bool alive();
-
-        void attackEnemyCastle(Game&);
-        bool checkForEnemyCastle(Game&); /* est-on a portee de la base ennemie ? */
-        std::vector<std::shared_ptr<Unit>> checkLineOfSight(Game&);
-        bool attack(Unit&);
-        bool advance(Game&); // mobile
-        int engage(Game&);
-
-        int haveRemainingActions();
-        void act() { remainingActions--;}
+        /// GETTERS/SETTERS
 
         void setPosition(int i) { pos = i;};
         void setHealth(int);
-
         virtual void setModel(Model&);
-
         Model& getModel() { return model; }
         int getHealth();
         int getPosition() { return pos; }
         std::string getName() { return model.getName(); }
         int getId() { return id; }
-
         Player& getOwner() { return owner; }
+
+        /// INGAME BEHAVIOURS
+
+        /* inflige des dommages a l'unite */
+        void takeDamage(int);
+        /* renvoie TRUE si la vie de l'unite > 0 */
+        bool alive();
+        /* cherche la base ennemie et determine si elle est a portee */
+        bool checkForEnemyCastle(Game&);
+        /* attaque la base ennemie */
+        void attackEnemyCastle(Game&);
+        /* repere les unites ennemies et cibles potentielles */
+        std::vector<std::shared_ptr<Unit>> checkLineOfSight(Game&);
+        bool attack(Unit&);
+        /* tente d'avancer sur le champ de bataille */
+        bool advance(Game&); // mobile
+        /* tente d'effectuer une action d'attaque, soit : chercher des cibles et attaquer si possible OU chercher la base ennemie et attaquer si possible */
+        int engage(Game&);
+        /* renvoie le nombre d'actions restantes */
+        int haveRemainingActions();
+        /* utilise un point d'action */
+        void useAction() { remainingActions--;}
+        /* restaure les points d'action */
+        void replenish();
+
+        /// DISPLAY
 
         std::string toString();
         std::string healthRatio()
         { return "[" + std::to_string(health) + "/" + std::to_string(model.maxHP) + "]"; }
 
         friend std::ostream& operator<<(std::ostream&, const Unit&);
-
-        void replenish();
     };
 
     std::ostream& operator<<(std::ostream& o, const Unit& u);

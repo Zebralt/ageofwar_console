@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include "globals.hpp"
 
 
     class Game;
@@ -18,19 +19,30 @@
     public:
         Player(std::string);
 
-        virtual void play(Game&) = 0;
-        bool hasLost();
+        /// GETTERS/SETTERS
 
         std::string getName();
+        void setName(std::string);
         int getHealth();
-
         unsigned int getGold();
-        void debit(int i);
-        void takeDamage(int i);
-        virtual Model& buy(std::vector<std::shared_ptr<Model>>&) = 0;
 
+        /// INGAME BEHAVIOURS
+
+        /* Fonction globale d'action du joueur */
+        virtual void play(Game&) = 0;
+        /* renvoie TRUE si la vie du joueur est <= 0 */
+        bool hasLost();
+        /* retire de l'argent au joueur */
+        void debit(int i);
+        /* inflige des degats au joueur */
+        void takeDamage(int i);
+        /* comportement d'achat */
+        virtual model_ptr buy(std::vector<model_ptr>&) = 0;
+        /* donne de l'argent au joueur */
         void give(unsigned int i) { gold += i;}
-        
+
+        /// DISPLAY
+
         std::string toString();
 
     };
@@ -43,7 +55,7 @@
         Human(std::string);
 
         void play(Game&);
-        Model& buy(std::vector<std::shared_ptr<Model>>&);
+        model_ptr buy(std::vector<model_ptr>&);
     };
 
     class AI : public Player {
@@ -52,8 +64,8 @@
         AI(std::string);
         AI();
 
-        void play(Game&);
-        Model& buy(std::vector<std::shared_ptr<Model>>&);
+        virtual void play(Game&);
+        virtual model_ptr buy(std::vector<model_ptr>&);
     };
 
 #endif // player_hpp__

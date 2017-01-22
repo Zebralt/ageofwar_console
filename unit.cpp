@@ -87,7 +87,6 @@
         else {
             return false;
         }
-        /// TODO : TRAMPLE(AOE, CATAPULT)
     }
 
     bool Unit::advance(Game& g) {
@@ -116,11 +115,17 @@
             for (std::vector<unit_ptr>::iterator it = potential_targets.begin(); it != potential_targets.end(); ++it) {
                 if (attack(**it)) {
 					if (game.VERBOSE) std::cout << '\t' << std::setw(20) << toString() << "\tattacks\t" << std::setw(20) <<(*it)->toString() << "\tdealing\t" << std::to_string(model.attackScore) << " damage : " << (*it)->healthRatio() << std::endl;
+
+                    /// TRAMPLE
+                    if (model.trample)
+                    for (int i=1;i<model.trample;i++) {
+                        game.bombard((*it)->getPosition() + i*(game.getDirection(owner)?1:-1), model.attackScore);
+                    }
 					return 1;
 				}
             }
         }
-        else if (potential_targets.size()==0)
+        else
         {
             return checkForEnemyCastle(game);
         }
@@ -128,13 +133,12 @@
     }
 
     bool Unit::checkForEnemyCastle(Game& game) {
-        if( ( game.getDirection(owner)==1 && pos + model.getMinimumRange() >= game.getBattlefieldLength()-1 ) || ( game.getDirection(owner)==0 && pos - model.getMinimumRange() <= 0) )
+        if( (game.getDirection(owner) && pos + model.range >= game.getBattlefieldLength()-1) || (!game.getDirection(owner) && pos - model.range <= 0) )
         {
-            std::cout << model.getName() << " from " << owner.getName() << " in position " << pos << " will attack ennemy castle" << std::endl;
+            if (game.VERBOSE) std::cout << toString() << " attacks ennemy castle" << std::endl;
             attackEnemyCastle(game);
             return true;
         }
-        std::cerr << model.getName() << " in position " << pos << " can't attack ennemy castle" << std::endl;
         return false;
     }
 

@@ -55,3 +55,12 @@
         disp += "\n]";
         return disp;
     }
+
+    std::string Model::stats() {
+        std::string disp;
+        disp = "[" +name + ": ";
+        disp += "maxHealth=" + std::to_string(maxHP) + " price=" + std::to_string(price)
+        + " attackScore= " + std::to_string(attackScore) + " range= " + std::to_string(range);
+        disp += "]";
+        return disp;
+    }
