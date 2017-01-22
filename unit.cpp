@@ -135,7 +135,7 @@
     bool Unit::checkForEnemyCastle(Game& game) {
         if( (game.getDirection(owner) && pos + model.range >= game.getBattlefieldLength()-1) || (!game.getDirection(owner) && pos - model.range <= 0) )
         {
-            if (game.VERBOSE) std::cout << toString() << " attacks ennemy castle" << std::endl;
+            if (game.VERBOSE) std::cout << toString() << " attacks enemy castle" << std::endl;
             attackEnemyCastle(game);
             return true;
         }
